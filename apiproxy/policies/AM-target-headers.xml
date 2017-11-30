@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-target-headers">
+    <DisplayName>AM-target-headers</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="X-Client-Cert">{verifyapikey.VA-header.X-Client-Cert}</Header>
+            <Header name="X-Client-Serial">{verifyapikey.VA-header.X-Client-Serial}</Header>
+            <Header name="X-Client-DN">{verifyapikey.VA-header.X-Client-DN}</Header>
+            <Header name="X-Client-CN">{verifyapikey.VA-header.X-Client-CN}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

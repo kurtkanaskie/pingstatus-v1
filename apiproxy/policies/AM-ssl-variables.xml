@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ssl-variables">
+    <DisplayName>AM-ssl-variables</DisplayName>
+    <AssignVariable>
+        <Name>SSL.client.cn</Name>
+        <Value/>
+        <Ref>client.cn</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.country</Name>
+        <Value/>
+        <Ref>client.country</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.email.address</Name>
+        <Value/>
+        <Ref>client.email.address</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.organization</Name>
+        <Value/>
+        <Ref>client.organization</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.organization.unit</Name>
+        <Value/>
+        <Ref>client.organization.unit</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.locality</Name>
+        <Value/>
+        <Ref>client.locality</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.state</Name>
+        <Value/>
+        <Ref>client.state</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>SSL.client.ssl.enabled</Name>
+        <Value/>
+        <Ref>client.ssl.enabled</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

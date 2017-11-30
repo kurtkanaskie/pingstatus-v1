@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-client-cn-mismatch">
+    <DisplayName>RF-client-cn-mismatch</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">
+{
+    "code": "400.01.002",
+    "message":"Mismatch client.cn in certificate '{client.cn}' does not match application client.cn attribute '{verifyapikey.VA-header.X-Client-CN}'",
+    "info":"https://developers.company.com/errors#400.01.001"
+}
+</Payload>
+            <StatusCode>401</StatusCode>
+            <ReasonPhrase>Unauthorized</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

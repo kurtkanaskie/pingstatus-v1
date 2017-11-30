@@ -1,0 +1,10 @@
+{
+    "apiconfig": {
+        "domain": "kurtkanaskie-test.apigee.net",
+        "basepath": "/pingstatus/v1",
+        "apiproxy": "pingstatus-v1",
+		"clientId": "REPLACE-CLIENTID",
+        "clientSecret": "REPLACE-CLIENTSECRET",
+        "invalidClientId": "REPLACE-INVALID-CLIENTID"
+    }
+}

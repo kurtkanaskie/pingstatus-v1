@@ -1,0 +1,5 @@
+testcaseid,userstory,testcasedescription,env,servername,path,execute,assertheader,assertcontent,assertcontentnegative
+pingstatus-1-1,pingstatus-1,valid ping,test,kurtkanaskie-test.apigee.net,/pingstatus/v1/ping,Y,HTTP/1.1 200 OK,PONG,NON-EXISTENT-WORD
+pingstatus-1-2,pingstatus-2,valid status,test,kurtkanaskie-test.apigee.net,/pingstatus/v1/status,Y,HTTP/1.1 200 OK,STATUS,NON-EXISTENT-WORD
+pingstatus-1-3,pingstatus-3,path suffix not found,test,kurtkanaskie-test.apigee.net,/pingstatus/v1/foo,Y,HTTP/1.1 404 Not Found,Resource not found,NON-EXISTENT-WORD
+pingstatus-1-4,pingstatus-4,path suffix not found,test,kurtkanaskie-test.apigee.net,/pingstatus/v1/foo/bar,Y,HTTP/1.1 404 Not Found,Resource not found,NON-EXISTENT-WORD

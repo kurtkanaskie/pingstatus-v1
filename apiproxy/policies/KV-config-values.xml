@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KV-config-values" mapIdentifier="pingstatus-v1">
+    <DisplayName>KV-config-values</DisplayName>
+    <Properties/>
+    <ExpiryTimeInSecs>60</ExpiryTimeInSecs>
+    <Get assignTo="flow.target.basepath" index="1">
+        <Key>
+            <Parameter>target.basepath</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="flow.target.pathsuffix">
+        <Key>
+            <Parameter>target.pathsuffix</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="logging.log" index="1">
+        <Key>
+            <Parameter>logging.log</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="logging.level" index="1">
+        <Key>
+            <Parameter>logging.level</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

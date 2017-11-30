@@ -1,0 +1,174 @@
+{
+    "version": "1.0",
+    "apiConfig": {
+    },
+    "envConfig": {
+        "test": {
+            "targetServers": [
+                {
+                    "name": "pingstatus-v1",
+                    "host": "kurtkanaskietrainer-trial-test.apigee.net",
+                    "isEnabled": true,
+                    "port": 443,
+                    "sSLInfo": {
+                        "ciphers": [],
+                        "clientAuthEnabled": "false",
+                        "enabled": "true",
+                        "ignoreValidationErrors": false,
+                        "protocols": []
+                    }
+                }
+            ],
+            "caches": [],
+            "kvms": [
+                {
+                    "name": "pingstatus-v1",
+                    "encrypted": false,
+                    "entry": [
+                        {
+                            "name": "target.basepath",
+                            "value": "pingstatusmock/v1"
+                        },
+                        {
+                            "name": "target.pathsuffix",
+                            "value": "status"
+                        }
+                    ]
+                }
+            ]
+        },
+        "prod": {
+            "targetServers": [
+                {
+                    "name": "pingstatus-v1",
+                    "host": "apibaas-trial.apigee.net",
+                    "isEnabled": true,
+                    "port": 443,
+                    "sSLInfo": {
+                        "ciphers": [],
+                        "clientAuthEnabled": "false",
+                        "enabled": "true",
+                        "ignoreValidationErrors": false,
+                        "protocols": []
+                    }
+                }
+            ],
+            "caches": [],
+            "kvms": [
+                {
+                    "name": "pingstatus-v1",
+                    "encrypted": false,
+                    "entry": [
+                        {
+                            "name": "target.basepath",
+                            "value": "kurtkanaskietraining/sandbox"
+                        },
+                        {
+                            "name": "target.pathsuffix",
+                            "value": "status"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "orgConfig": {
+        "apiProducts": [
+            {
+                "name": "pingstatus-v1-product-test",
+                "apiResources": [
+                    "/",
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "custom.description",
+                        "value": "Product to test pingstatus API for test env"
+                    }
+                ],
+                "description": "Product to test pingstatus-v1 API in test env",
+                "displayName": "pingstatus-v1-product-test",
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "pingstatus-v1",
+                    "pingstatus-kurtkanaskiev1"
+                ],
+                "quota": "10000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            },
+            {
+                "name": "pingstatus-v1-product-prod",
+                "apiResources": [
+                    "/",
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "custom.description",
+                        "value": "Product to test pingstatus API for prod env"
+                    }
+                ],
+                "description": "Product to test pingstatus-v1 API in prod env",
+                "displayName": "pingstatus-v1-product-prod",
+                "environments": [
+                    "prod"
+                ],
+                "proxies": [
+                    "pingstatus-v1"
+                ],
+                "quota": "10000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            }        
+        ],
+        "developers": [
+            {
+                "email": "kurtkanaskie+app@google.com",
+                "firstName": "Kurt App",
+                "lastName": "Kanaskie",
+                "userName": "kurtappkanaskie",
+                "attributes": [
+                    {
+                        "name": "note",
+                        "value": "developer+suffix@google.com is fixed"
+                    }
+                ]
+            }
+        ],
+        "developerApps": {
+            "kurtkanaskie@google.com": [
+                {
+                    "name": "pingstatus-v1-app-test",
+                    "apiProducts": [ "pingstatus-v1-product-test" ],
+                    "callbackUrl": "NA",
+                    "scopes": [],
+                    "attributes": [
+                        {
+                            "name": "custom.privacy",
+                            "value": "confidential"
+                        }
+                    ]
+                },
+                {
+                    "name": "pingstatus-v1-app-prod",
+                    "apiProducts": [ "pingstatus-v1-product-prod" ],
+                    "callbackUrl": "NA",
+                    "scopes": [],
+                    "attributes": [
+                        {
+                            "name": "custom.privacy",
+                            "value": "confidential"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

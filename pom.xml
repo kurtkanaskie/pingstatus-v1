@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>apigee</groupId>
+	<artifactId>pingstatus-v1</artifactId>
+	<version>-</version>
+	<name>pingstatus-${deployment.suffix}v1</name>
+	<packaging>pom</packaging>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Maven Plugin Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<org.slf4j.simpleLogger.defaultLogLevel>info</org.slf4j.simpleLogger.defaultLogLevel>
+		<project.root.dir>${basedir}</project.root.dir>
+		<target.root.dir>${basedir}/target</target.root.dir>
+		<deployment.suffix>${user.name}</deployment.suffix>
+		<commit></commit>
+		<branch>a local</branch>
+	</properties>
+
+	<!-- This is where you add environment specific properties under various profile names 
+		 For apigee.options, refer to "Advanced Configuration Options" under https://github.com/apigee/apigee-deploy-maven-plugin#pom-xml-sample 
+	-->
+	<profiles>
+		<profile>
+			<id>training-test</id>
+			<properties>
+				<apigee.profile>training-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${env.APIGEE_ORG}</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
+				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
+				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+			</properties>
+		</profile>
+		<profile>
+			<id>training-prod</id>
+			<properties>
+				<apigee.profile>training-prod</apigee.profile>
+				<apigee.env>prod</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${env.APIGEE_ORG}</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
+				<api.testtag>~@health</api.testtag>
+				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+			</properties>
+		</profile><profile>
+			<id>demo15-test</id>
+			<properties>
+				<apigee.profile>demo15-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${env.APIGEE_ORG}</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
+				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
+				<clientId>lxHNz4MYg4bHkU0LLdqvxcFOKqO1Nc5Q</clientId>
+			</properties>
+		</profile>	
+	</profiles>
+
+	<build>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>io.apigee.build-tools.enterprise4g</groupId>
+					<artifactId>apigee-edge-maven-plugin</artifactId>
+					<version>1.0.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+
+			<!-- run jslint -->
+			<plugin>
+				<groupId>com.cj.jshintmojo</groupId>
+				<artifactId>jshint-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>jslint</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>lint</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<options>curly,eqeqeq,forin,latedef,undef,noempty,nonew,unused</options>
+					<directories>
+						<directory>apiproxy/resources/jsc</directory>
+					</directories>
+					<reporter>jslint</reporter>
+				</configuration>
+			</plugin>
+
+			<!-- copy the full apiproxy folder to target folder -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<!--source -->
+									<directory>${project.root.dir}</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>apiproxy/**</include>
+										<include>test/integration/**</include>
+										<include>test/performance/**</include>
+									</includes>
+								</resource>
+							</resources>
+							<!--target -->
+							<outputDirectory>${target.root.dir}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.2</version>
+				<executions>
+					<execution>
+						<id>replace</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<basedir>${target.root.dir}</basedir>
+					<includes>
+						<include>apiproxy/proxies/default.xml</include>
+						<include>test/integration/test-config.json</include>
+						<include>apiproxy/pingstatus-v1.xml</include>
+						<include>test/performance/testdata.csv</include>
+					</includes>
+					<replacements>
+						<replacement>
+							<token>/pingstatus/v1</token>
+							<value>/pingstatus/${deployment.suffix}v1</value>
+						</replacement>
+						<replacement>
+							<token>pingstatus-v1</token>
+							<value>pingstatus-${deployment.suffix}v1</value>
+						</replacement>
+						<replacement>
+							<token>kurtkanaskie-test.apigee.net</token>
+							<value>${api.northbound.domain}</value>
+						</replacement>
+						<replacement>
+							<token>@description</token>
+							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
+						</replacement>
+						<replacement>
+							<token>REPLACE-CLIENTID</token>
+							<value>${clientId}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>io.apigee.build-tools.enterprise4g</groupId>
+				<artifactId>apigee-edge-maven-plugin</artifactId>
+				<version>1.1.5</version>
+				<executions>
+					<execution>
+						<id>configure-bundle-step</id>
+						<phase>package</phase>
+						<goals>
+							<goal>configure</goal>
+						</goals>
+					</execution>
+					<!--deploy bundle -->
+					<execution>
+						<id>deploy-bundle-step</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Configuration -->
+            <plugin>
+                <groupId>com.apigee.edge.config</groupId>
+                <artifactId>apigee-config-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>create-config-cache</id>
+                        <phase>verify</phase>                        
+                        <goals>
+                            <goal>caches</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-targetserver</id>
+                        <phase>verify</phase>                        
+                        <goals>
+                            <goal>targetservers</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-kvm</id>
+                        <phase>verify</phase>                        
+                        <goals>
+                            <goal>keyvaluemaps</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-apiproduct</id>
+                        <phase>install</phase>                        
+                        <goals>
+                            <goal>apiproducts</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-developer</id>
+                        <phase>install</phase>                        
+                        <goals>
+                            <goal>developers</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-app</id>
+                        <phase>install</phase>                        
+                        <goals>
+                            <goal>apps</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>   
+
+            <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.3.2</version>
+				<executions>
+					<!-- npm install -->
+					<execution>
+						<id>npm-install</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<commandlineArgs>
+								install
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<!-- run unit tests -->
+					<execution>
+						<id>unit</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<!-- For windows -->
+							<executable>node</executable>
+							<commandlineArgs>
+								./node_modules/mocha/bin/mocha test/unit
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					<!-- run integration tests -->
+					<execution>
+						<id>integration</id>
+						<phase>install</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>node</executable>
+							<commandlineArgs>
+								./node_modules/cucumber/bin/cucumber.js target/test/integration/features --tags ${api.testtag}
+							</commandlineArgs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- run performance tests -->
+			<plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>2.2.0</version>
+                <executions>
+                    <execution>
+                        <id>jmeter-tests</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                        <configuration>
+                            <skipTests>${skipTests}</skipTests>
+                            <ignoreResultFailures>true</ignoreResultFailures>
+                            <suppressJMeterOutput>false</suppressJMeterOutput>
+                            <propertiesUser>
+                                <testData>testdata.csv</testData>
+                                <threadNum>10</threadNum>
+                                <rampUpPeriodSecs>2</rampUpPeriodSecs>
+                                <loopCount>10</loopCount>
+                            </propertiesUser>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testFilesDirectory>target/test/performance</testFilesDirectory>
+                    <testResultsTimestamp>false</testResultsTimestamp>
+                    <resultsDirectory>${project.root.dir}/results/performance</resultsDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-analysis-maven-plugin</artifactId>
+                <version>1.0.6</version>
+                <executions>
+                    <execution>
+                        <id>jmeter-analysis</id>
+						<phase>install</phase>
+                        <goals>
+                            <goal>analyze</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceDirFailed>false</sourceDirFailed>
+                    <source>${project.root.dir}/results/performance/*</source>
+					<targetDirectory>${project.root.dir}/results/performance/reports</targetDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- cleaning dirs -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+
+				<executions>
+					<execution>
+						<id>auto-clean-init</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<!-- leave the target dir for debugging, post mortem -->
+					<execution>
+						<id>auto-clean-install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<!-- -->
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

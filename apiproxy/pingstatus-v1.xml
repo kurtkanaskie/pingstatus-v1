@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="3" name="pingstatus-v1">
+    <Basepaths>/pingstatus/v1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1498501085399</CreatedAt>
+    <CreatedBy>kurtkanaskie@google.com</CreatedBy>
+    <Description>@description</Description>
+    <DisplayName>pingstatus-v1</DisplayName>
+    <LastModifiedAt>1498501085399</LastModifiedAt>
+    <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
+    <Policies>
+        <Policy>AM-create-status-response</Policy>
+        <Policy>AM-debug</Policy>
+        <Policy>AM-default-proxy-fault</Policy>
+        <Policy>AM-missing-or-invalid-clientId</Policy>
+        <Policy>AM-resource-not-found</Policy>
+        <Policy>AM-set-service-unavailable-error-variables</Policy>
+        <Policy>JS-set-time-data</Policy>
+        <Policy>KV-Get-Config-Values</Policy>
+        <Policy>RF-create-ping-response</Policy>
+        <Policy>RF-path-suffix-not-found</Policy>
+        <Policy>VA-header</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JS-set-time-data.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
