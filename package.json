@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "devDependencies": {
     "apickli": "^1.7.0",
-    "apigeelint": "^0.2.0",
+    "cucumber": "^1.0.0",
+    "prettyjson": "^1.1.3",
     "bluebird": "^3.3.5",
     "chai": "^3",
     "chai-fuzzy": "^1",
-    "cucumber": "^1.0.0",
-    "cucumber-pretty": "0.0.5",
     "mocha": "^2",
-    "prettyjson": "^1.1.3",
-    "sinon": "^1"
+    "sinon": "^1",
+    "apigeelint": "^0.2.0"
   },
   "jshintConfig": {
     "predef": [
