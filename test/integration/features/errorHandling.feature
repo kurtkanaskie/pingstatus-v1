@@ -20,9 +20,9 @@ Feature: Error handling
         And response header Content-Type should be application/json
         And response body path $.message should be No resource for GET /foo/bar
 
-    @foo
+    @foobar
     Scenario: GET /foo/bar request not found
         Given I set X-APIKey header to `clientId`
         When I GET /foo/bar
-        Then I should get a 404 error with message "No resource for GET /foo/bar" and code "404.01.001"
+        Then I should get a 404 error with message "No resource for GET /foo/bar" and code "404.001"
         

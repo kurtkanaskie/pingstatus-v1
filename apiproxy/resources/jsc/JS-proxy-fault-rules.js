@@ -82,7 +82,7 @@ switch(faultName) {
             var appClientCN = context.getVariable("verifyapikey.VA-header.X-Client-CN");
             description = "Mismatch client.cn in certificate '" + clientCN + "' does not match application client.cn attribute '" + appClientCN + "'";
         } else if( context.getVariable("raisefault.RF-path-suffix-not-found.failed") === true ) {
-            var uri = context.getVariable("request.uri");
+            var uri = context.getVariable("proxy.pathsuffix");
             var verb = context.getVariable("request.verb");
             responseCode = "404";
             reasonPhrase = "Method Not Allowed";

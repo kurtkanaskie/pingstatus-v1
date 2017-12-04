@@ -22,7 +22,7 @@
                 "consumes": [],
                 "produces": [ "application/json" ],
                 "parameters": [
-                    { "in": "header", "name": "clientId", "description": "Application Identifier also known as API Key", "required": true, "type": "string", "default": "Uvz7ahhlaer3zhOp25BGmAzSQVEbsJNw" }
+                    { "in": "header", "name": "X-APIKey", "description": "Application Identifier also known as API Key", "required": true, "type": "string", "default": "N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl" }
                 ],
                 "responses": {
                     "200": { "description": "OK", "schema": { "$ref": "#/definitions/PingResponse" } },
@@ -41,7 +41,7 @@
                     "application/json"
                 ],
                 "parameters": [
-                    { "in": "header", "name": "clientId", "description": "Application Identifier also known as API Key", "required": true, "type": "string", "default": "Uvz7ahhlaer3zhOp25BGmAzSQVEbsJNw" }
+                    { "in": "header", "name": "X-APIKey", "description": "Application Identifier also known as API Key", "required": true, "type": "string", "default": "N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl" }
                 ],
                 "responses": {
                     "200": { "description": "OK", "schema": { "$ref": "#/definitions/StatusResponse" } },
