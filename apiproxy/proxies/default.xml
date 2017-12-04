@@ -3,7 +3,7 @@
     <Description/>
     <DefaultFaultRule name="DefaultFaultRule">
         <Step>
-            <Condition>(flow.error.code = null)</Condition>
+            <Condition>(flow.error.code == null)</Condition>
             <Name>AM-set-proxy-default-error-vars</Name>
         </Step>
         <Step>
@@ -13,6 +13,8 @@
     </DefaultFaultRule>
     <FaultRules>
         <FaultRule name="ProxyFaultRules">
+            <!-- Quiet apigeelint -->
+            <Condition>(fault.name)</Condition>
             <Step>
                 <Name>JS-proxy-fault-rules</Name>
             </Step>
@@ -21,10 +23,10 @@
     <PreFlow name="PreFlow">
         <Request>
             <Step>
-                <Name>KV-config-values</Name>
+                <Name>VA-header</Name>
             </Step>
             <Step>
-                <Name>VA-header</Name>
+                <Name>KV-config-values</Name>
             </Step>
         </Request>
         <Response/>
@@ -35,7 +37,7 @@
     </PostFlow>
     <Flows>
         <Flow name="ping">
-            <Description>proxy response</Description>
+            <Description>proxy health check</Description>
             <Request>
                 <Step>
                     <Name>JS-set-time-data</Name>
@@ -48,7 +50,7 @@
             <Condition>(proxy.pathsuffix MatchesPath "/ping") and (request.verb = "GET")</Condition>
         </Flow>
         <Flow name="status">
-            <Description>back end status</Description>
+            <Description>back end health check</Description>
             <Request/>
             <Response>
                 <Step>
