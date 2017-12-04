@@ -14,7 +14,7 @@
     <FaultRules>
         <FaultRule name="ProxyFaultRules">
             <!-- Quiet apigeelint -->
-            <Condition>(fault.name)</Condition>
+            <Condition>(fault.name != null)</Condition>
             <Step>
                 <Name>JS-proxy-fault-rules</Name>
             </Step>
