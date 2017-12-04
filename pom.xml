@@ -65,7 +65,7 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
 				<api.testtag>~@health</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+				<clientId>AE6cFBYSuvHX1YVW6UtCdqOMQoBuMIyW</clientId>
 			</properties>
 		</profile><profile>
 			<id>demo15-test</id>
