@@ -7,7 +7,7 @@
             <Name>AM-set-proxy-default-error-vars</Name>
         </Step>
         <Step>
-            <Condition>raisefault.RF-CORS-Pre-Flight.failed != true</Condition>
+            <!-- This will still work with CORS because using error code and status from RF-CORS-Pre-Flight in Fault Rules JS -->
             <Name>AM-set-standard-error-response</Name>
         </Step>
     <AlwaysEnforce>true</AlwaysEnforce>

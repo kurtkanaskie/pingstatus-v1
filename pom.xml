@@ -49,7 +49,7 @@
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
 			</properties>
 		</profile>
@@ -352,7 +352,7 @@
                             <goal>jmeter</goal>
                         </goals>
                         <configuration>
-                            <skipTests>${skipTests}</skipTests>
+                            <skipTests>${skipPerformanceTests}</skipTests>
                             <ignoreResultFailures>true</ignoreResultFailures>
                             <suppressJMeterOutput>false</suppressJMeterOutput>
                             <propertiesUser>
