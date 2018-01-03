@@ -292,6 +292,21 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					<!-- run apigeelint -->
+					<execution>
+						<id>apigeelint</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<!-- For windows -->
+							<executable>node</executable>
+							<commandlineArgs>
+								./node_modules/apigeelint/cli.js -s ./apiproxy -f table
+							</commandlineArgs>
+						</configuration>
+					</execution>
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>
