@@ -164,7 +164,7 @@ To see what "tags" are in the tests for cucumberjs run `grep @ *.features` or `f
 mvn install -Pprod -Ddeployment.suffix= -Dapigee.config.options=sync -Dcommit=local -Dbranch=master
 
 ### JMeter
-To prevent jmeter from running use -DskipTests=true
+To prevent jmeter from running use -DskipPerformanceTests=true
 jmeter -n -j target/test/performance/jmeter.log -l target/test/performance/output.txt -t target/test/performance/test.jmx -DtestData=testdata.csv -DthreadNum=10 -DrampUpPeriodSecs=1 -DloopCount=4 -Drecycle=true
 
 ### JSLint
@@ -215,7 +215,7 @@ mvn -Ptest clean process-resources jmeter:jmeter jmeter-analysis:analyze -Ddeplo
 mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-status
 mvn -Ptest apigee-config:developers apigee-config:apiproducts apigee-config:developerapps -Dapigee.config.options=update
 mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
-mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
+mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipPerformanceTests=true
 mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-ping
 
 mvn -Ptest apigee-config:targetservers -Dapigee.config.options=update
@@ -224,10 +224,10 @@ mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
 mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
 
 Install proxy no integration or jmeter tests
-mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipTests=true
+mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipPerformanceTests=true
 
 Install proxy and update all configs, no integration or jmeter tests
-mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipTests=true
+mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipPerformanceTests=true
 
 Export App keys
 mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
