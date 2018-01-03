@@ -7,6 +7,7 @@
             <Name>AM-set-proxy-default-error-vars</Name>
         </Step>
         <Step>
+            <Condition>raisefault.RF-CORS-Pre-Flight.failed != true</Condition>
             <Name>AM-set-standard-error-response</Name>
         </Step>
     <AlwaysEnforce>true</AlwaysEnforce>
