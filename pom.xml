@@ -293,6 +293,7 @@
 						</configuration>
 					</execution>
 					<!-- run apigeelint -->
+					<!--
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>
@@ -300,13 +301,13 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<!-- For windows -->
 							<executable>node</executable>
 							<commandlineArgs>
 								./node_modules/apigeelint/cli.js -s ./apiproxy -f table
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					-->
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>
@@ -315,7 +316,6 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<!-- For windows -->
 							<executable>node</executable>
 							<commandlineArgs>
 								./node_modules/mocha/bin/mocha test/unit
@@ -340,6 +340,7 @@
 			</plugin>
 
 			<!-- run performance tests -->
+			<!--
 			<plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
@@ -390,7 +391,7 @@
 					<targetDirectory>${project.root.dir}/results/performance/reports</targetDirectory>
                 </configuration>
             </plugin>
-
+	        -->
             <!-- cleaning dirs -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>

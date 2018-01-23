@@ -9,8 +9,7 @@
     "chai": "^3",
     "chai-fuzzy": "^1",
     "mocha": "^2",
-    "sinon": "^1",
-    "apigeelint": "^0.2.0"
+    "sinon": "^1"
   },
   "jshintConfig": {
     "predef": [
