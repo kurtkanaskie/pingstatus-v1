@@ -184,7 +184,7 @@
 							<value>pingstatus-${deployment.suffix}v1</value>
 						</replacement>
 						<replacement>
-							<token>kurtkanaskie-test.apigee.net</token>
+							<token>kurtkanaskietrainer-trial-test.apigee.net</token>
 							<value>${api.northbound.domain}</value>
 						</replacement>
 						<replacement>
