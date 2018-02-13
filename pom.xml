@@ -293,7 +293,6 @@
 						</configuration>
 					</execution>
 					<!-- run apigeelint -->
-					<!--
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>
@@ -307,7 +306,6 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
-					-->
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>
