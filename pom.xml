@@ -293,6 +293,7 @@
 						</configuration>
 					</execution>
 					<!-- run apigeelint -->
+					<!-- its got issues on Jenkins 
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>
@@ -306,6 +307,7 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					-->
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>
