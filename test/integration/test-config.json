@@ -3,7 +3,7 @@
         "domain": "kurtkanaskietrainer-trial-test.apigee.net",
         "basepath": "/pingstatus/v1",
         "apiproxy": "pingstatus-v1",
-		"clientId": "9MC8bqlqTaaPJg6fGuTSj2WwYLORRHIA",
+		"clientId": "REPLACE-CLIENTID",
         "clientSecret": "REPLACE-CLIENTSECRET",
         "invalidClientId": "REPLACE-INVALID-CLIENTID"
     }

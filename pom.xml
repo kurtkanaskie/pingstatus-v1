@@ -50,7 +50,7 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+				<clientId>jbibSZW712N5qqjaWMpAD3HM9eMeclMg</clientId>
 			</properties>
 		</profile>
 		<profile>
