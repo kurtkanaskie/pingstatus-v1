@@ -89,10 +89,11 @@ switch(faultName) {
             code = "404.001";
             description = "No resource for " + verb + " " + uri;
         } else {
-            responseCode = "400";
-            reasonPhrase = "Bad Request";
-            code = "400.001";
-            description = "Unknown error occured";
+            // This allows CORS to work without modifying DefaultFaultRules
+            responseCode = context.getVariable("error.status.code");
+            reasonPhrase = context.getVariable("error.reason.phrase");
+            code = "400.000";
+            description = reasonPhrase;
         }
         break;
         

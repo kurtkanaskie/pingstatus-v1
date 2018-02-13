@@ -1,6 +1,6 @@
 {
     "apiconfig": {
-        "domain": "kurtkanaskie-test.apigee.net",
+        "domain": "kurtkanaskietrainer-trial-test.apigee.net",
         "basepath": "/pingstatus/v1",
         "apiproxy": "pingstatus-v1",
 		"clientId": "REPLACE-CLIENTID",

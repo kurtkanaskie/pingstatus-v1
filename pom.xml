@@ -49,8 +49,8 @@
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+				<clientId>jbibSZW712N5qqjaWMpAD3HM9eMeclMg</clientId>
 			</properties>
 		</profile>
 		<profile>
@@ -202,7 +202,7 @@
 			<plugin>
 				<groupId>io.apigee.build-tools.enterprise4g</groupId>
 				<artifactId>apigee-edge-maven-plugin</artifactId>
-				<version>1.1.5</version>
+				<version>1.1.6</version>
 				<executions>
 					<execution>
 						<id>configure-bundle-step</id>
@@ -292,6 +292,22 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+					<!-- run apigeelint -->
+					<!-- its got issues on Jenkins 
+					<execution>
+						<id>apigeelint</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>node</executable>
+							<commandlineArgs>
+								./node_modules/apigeelint/cli.js -s ./apiproxy -f table
+							</commandlineArgs>
+						</configuration>
+					</execution>
+					-->
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>
@@ -300,7 +316,6 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<!-- For windows -->
 							<executable>node</executable>
 							<commandlineArgs>
 								./node_modules/mocha/bin/mocha test/unit
@@ -325,6 +340,7 @@
 			</plugin>
 
 			<!-- run performance tests -->
+			<!--
 			<plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
@@ -337,7 +353,7 @@
                             <goal>jmeter</goal>
                         </goals>
                         <configuration>
-                            <skipTests>${skipTests}</skipTests>
+                            <skipTests>${skipPerformanceTests}</skipTests>
                             <ignoreResultFailures>true</ignoreResultFailures>
                             <suppressJMeterOutput>false</suppressJMeterOutput>
                             <propertiesUser>
@@ -375,7 +391,7 @@
 					<targetDirectory>${project.root.dir}/results/performance/reports</targetDirectory>
                 </configuration>
             </plugin>
-
+	        -->
             <!-- cleaning dirs -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>

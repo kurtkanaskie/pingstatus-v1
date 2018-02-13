@@ -1,4 +1,4 @@
-@intg
+@errorHandling
 Feature: Error handling
 	As an API consumer
 	I want consistent and meaningful error responses
