@@ -10,7 +10,7 @@ var getNewApickliInstance = function(basepath, domain) {
 	basepath = basepath || defaultBasePath;
 	domain = domain || defaultDomain;
 
-	return new apickli.Apickli('https', domain + basepath);
+	return new apickli.Apickli('http', domain + basepath);
 };
 
 exports.getNewApickliInstance = getNewApickliInstance;

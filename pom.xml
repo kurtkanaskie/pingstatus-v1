@@ -39,6 +39,21 @@
 	-->
 	<profiles>
 		<profile>
+			<id>local-aio-test</id>
+			<properties>
+				<apigee.profile>local-aio-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>http://localhost:8080</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>trial</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>http://localhost:9001</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+				<clientId>GSiFV6dfrfK3hI4CVYkCU6O5yabprnUd</clientId>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
@@ -270,6 +285,13 @@
                             <goal>apps</goal>
                         </goals>
                     </execution>
+                    <execution>
+						<id>export-config-app</id>
+						<phase>install</phase>
+						<goals>
+							<goal>exportAppKeys</goal>
+						</goals>
+					</execution>
                 </executions>
             </plugin>   
 
@@ -406,6 +428,7 @@
 						</goals>
 					</execution>
 					<!-- leave the target dir for debugging, post mortem -->
+					<!--
 					<execution>
 						<id>auto-clean-install</id>
 						<phase>install</phase>
@@ -413,7 +436,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					<!-- -->
+					-->
 				</executions>
 			</plugin>
 		</plugins>

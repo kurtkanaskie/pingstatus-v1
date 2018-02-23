@@ -36,40 +36,6 @@
                     ]
                 }
             ]
-        },
-        "prod": {
-            "targetServers": [
-                {
-                    "name": "pingstatus-v1",
-                    "host": "apibaas-trial.apigee.net",
-                    "isEnabled": true,
-                    "port": 443,
-                    "sSLInfo": {
-                        "ciphers": [],
-                        "clientAuthEnabled": "false",
-                        "enabled": "true",
-                        "ignoreValidationErrors": false,
-                        "protocols": []
-                    }
-                }
-            ],
-            "caches": [],
-            "kvms": [
-                {
-                    "name": "pingstatus-v1",
-                    "encrypted": false,
-                    "entry": [
-                        {
-                            "name": "target.basepath",
-                            "value": "kurtkanaskietraining/sandbox"
-                        },
-                        {
-                            "name": "target.pathsuffix",
-                            "value": "status"
-                        }
-                    ]
-                }
-            ]
         }
     },
     "orgConfig": {
@@ -93,40 +59,13 @@
                     "test"
                 ],
                 "proxies": [
-                    "pingstatus-v1",
-                    "pingstatus-kurtkanaskiev1"
-                ],
-                "quota": "10000",
-                "quotaInterval": "1",
-                "quotaTimeUnit": "month",
-                "scopes": []
-            },
-            {
-                "name": "pingstatus-v1-product-prod",
-                "apiResources": [
-                    "/",
-                    "/**"
-                ],
-                "approvalType": "auto",
-                "attributes": [
-                    {
-                        "name": "custom.description",
-                        "value": "Product to test pingstatus API for prod env"
-                    }
-                ],
-                "description": "Product to test pingstatus-v1 API in prod env",
-                "displayName": "pingstatus-v1-product-prod",
-                "environments": [
-                    "prod"
-                ],
-                "proxies": [
                     "pingstatus-v1"
                 ],
                 "quota": "10000",
                 "quotaInterval": "1",
                 "quotaTimeUnit": "month",
                 "scopes": []
-            }        
+            }  
         ],
         "developers": [
             {
@@ -143,22 +82,10 @@
             }
         ],
         "developerApps": {
-            "kurtkanaskie@google.com": [
+            "kurtkanaskie+app@google.com": [
                 {
                     "name": "pingstatus-v1-app-test",
                     "apiProducts": [ "pingstatus-v1-product-test" ],
-                    "callbackUrl": "NA",
-                    "scopes": [],
-                    "attributes": [
-                        {
-                            "name": "custom.privacy",
-                            "value": "confidential"
-                        }
-                    ]
-                },
-                {
-                    "name": "pingstatus-v1-app-prod",
-                    "apiProducts": [ "pingstatus-v1-product-prod" ],
                     "callbackUrl": "NA",
                     "scopes": [],
                     "attributes": [

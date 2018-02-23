@@ -228,8 +228,9 @@ mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipPerformanceTes
 
 Install proxy and update all configs, no integration or jmeter tests
 mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipPerformanceTests=true
+mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping -DskipPerformanceTests=true
 
 Export App keys
-mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
+mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
 
 Change

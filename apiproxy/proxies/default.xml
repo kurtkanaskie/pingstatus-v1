@@ -77,7 +77,7 @@
     <HTTPProxyConnection>
         <BasePath>/pingstatus/v1</BasePath>
         <Properties/>
-        <VirtualHost>secure</VirtualHost>
+        <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="ping">
         <Condition>(proxy.pathsuffix MatchesPath "/ping")</Condition>
