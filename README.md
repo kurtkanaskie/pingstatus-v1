@@ -205,32 +205,32 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 ```
 
 ### Frequently used commands
-mvn jshint:lint
-mvn -Ptest exec:exec@unit
-mvn -Ptest install -Ddeployment.suffix=
-mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
-mvn -Ptest process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
-mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=sync -Dapi.testtag=@get-ping
-mvn -Ptest clean process-resources jmeter:jmeter jmeter-analysis:analyze -Ddeployment.suffix=
-mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-status
-mvn -Ptest apigee-config:developers apigee-config:apiproducts apigee-config:developerapps -Dapigee.config.options=update
-mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
-mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipPerformanceTests=true
-mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-ping
+* mvn jshint:lint
+* mvn -Ptest exec:exec@unit
+* mvn -Ptest install -Ddeployment.suffix=
+* mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
+* mvn -Ptest process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
+* mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=sync -Dapi.testtag=@get-ping
+* mvn -Ptest clean process-resources jmeter:jmeter jmeter-analysis:analyze -Ddeployment.suffix=
+* mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-status
+* mvn -Ptest apigee-config:developers apigee-config:apiproducts apigee-config:developerapps -Dapigee.config.options=update
+* mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
+* mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipPerformanceTests=true
+* mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-ping
 
-mvn -Ptest apigee-config:targetservers -Dapigee.config.options=update
-mvn -Ptest apigee-config:developerapps -Dapigee.config.options=update
-mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
-mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
+* mvn -Ptest apigee-config:targetservers -Dapigee.config.options=update
+* mvn -Ptest apigee-config:developerapps -Dapigee.config.options=update
+* mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
+* mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
 
 Install proxy no integration or jmeter tests
-mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipPerformanceTests=true
+* mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipPerformanceTests=true
 
 Install proxy and update all configs, no integration or jmeter tests
-mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipPerformanceTests=true
-mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping -DskipPerformanceTests=true
+* mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipPerformanceTests=true
+* mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping -DskipPerformanceTests=true
 
 Export App keys
-mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
+* mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
 
 Change
