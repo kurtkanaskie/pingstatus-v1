@@ -48,7 +48,7 @@
 				<apigee.org>trial</apigee.org>
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>http://localhost:9001</api.northbound.domain>
+				<api.northbound.domain>localhost:9001</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
@@ -164,6 +164,26 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- rename an env org
+			<plugin>
+				<groupId>com.coderplus.maven.plugins</groupId>
+				<artifactId>copy-rename-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>copy-and-rename-file</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>rename</goal>
+						</goals>
+						<configuration>
+							<sourceFile>${project.build.directory}/file-to-rename.txt</sourceFile>
+							<destinationFile>${project.build.directory}/renamed-file.txt</destinationFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			-->
 
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
