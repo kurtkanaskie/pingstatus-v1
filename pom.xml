@@ -79,7 +79,22 @@
 				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
 				<api.testtag>~@health</api.testtag>
 			</properties>
-		</profile><profile>
+		</profile>
+		<profile>
+			<id>2016-test</id>
+			<properties>
+				<apigee.profile>2016-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>kkanaskie2016</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>kkanaskie2016-test.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>demo15-test</id>
 			<properties>
 				<apigee.profile>demo15-test</apigee.profile>

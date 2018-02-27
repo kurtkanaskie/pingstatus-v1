@@ -235,4 +235,6 @@ Export App keys
 
 ##All at once
 * mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
-mvn -Plocal-aio-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+
+##Just run the tests
+* mvn -Plocal-aio-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
