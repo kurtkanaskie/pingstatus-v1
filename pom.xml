@@ -50,7 +50,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>http://localhost:9001</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-				<clientId>GSiFV6dfrfK3hI4CVYkCU6O5yabprnUd</clientId>
 			</properties>
 		</profile>
 		<profile>
@@ -65,7 +64,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-				<clientId>jbibSZW712N5qqjaWMpAD3HM9eMeclMg</clientId>
 			</properties>
 		</profile>
 		<profile>
@@ -80,7 +78,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
 				<api.testtag>~@health</api.testtag>
-				<clientId>AE6cFBYSuvHX1YVW6UtCdqOMQoBuMIyW</clientId>
 			</properties>
 		</profile><profile>
 			<id>demo15-test</id>
@@ -94,7 +91,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
 				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>lxHNz4MYg4bHkU0LLdqvxcFOKqO1Nc5Q</clientId>
 			</properties>
 		</profile>	
 	</profiles>
@@ -155,6 +151,7 @@
 									<directory>${project.root.dir}</directory>
 									<filtering>true</filtering>
 									<includes>
+										<include>resources/**</include>
 										<include>apiproxy/**</include>
 										<include>test/integration/**</include>
 										<include>test/performance/**</include>
@@ -184,10 +181,11 @@
 				<configuration>
 					<basedir>${target.root.dir}</basedir>
 					<includes>
+						<include>apiproxy/pingstatus-v1.xml</include>
 						<include>apiproxy/proxies/default.xml</include>
 						<include>test/integration/test-config.json</include>
-						<include>apiproxy/pingstatus-v1.xml</include>
-						<include>test/performance/testdata.csv</include>
+						<include>resources/edge/org/apiProducts.json</include>
+						<include>resources/edge/org/developerApps.json</include>
 					</includes>
 					<replacements>
 						<replacement>
@@ -199,7 +197,7 @@
 							<value>pingstatus-${deployment.suffix}v1</value>
 						</replacement>
 						<replacement>
-							<token>kurtkanaskietrainer-trial-test.apigee.net</token>
+							<token>API_NORTHBOUND_DOMAIN</token>
 							<value>${api.northbound.domain}</value>
 						</replacement>
 						<replacement>
@@ -207,8 +205,8 @@
 							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
 						</replacement>
 						<replacement>
-							<token>REPLACE-CLIENTID</token>
-							<value>${clientId}</value>
+							<token>APIGEE_ENVIRONMENT</token>
+							<value>${apigee.env}</value>
 						</replacement>
 					</replacements>
 				</configuration>
@@ -285,7 +283,6 @@
                             <goal>apps</goal>
                         </goals>
                     </execution>
-                    <!--
                     <execution>
 						<id>export-config-app</id>
 						<phase>install</phase>
@@ -293,7 +290,6 @@
 							<goal>exportAppKeys</goal>
 						</goals>
 					</execution>
-					-->
                 </executions>
             </plugin>   
 
@@ -317,7 +313,7 @@
 						</configuration>
 					</execution>
 					<!-- run apigeelint -->
-					<!-- its got issues on Jenkins 
+					<!-- its got issues on Jenkins -->
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>
@@ -331,7 +327,7 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
-					-->
+					<!-- -->
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>

@@ -1,0 +1,15 @@
+[
+    {
+        "name": "pingstatus-v1",
+        "host": "apibaas-trial.apigee.net",
+        "isEnabled": true,
+        "port": 443,
+        "sSLInfo": {
+            "ciphers": [],
+            "clientAuthEnabled": "false",
+            "enabled": "true",
+            "ignoreValidationErrors": false,
+            "protocols": []
+        }
+    }
+]

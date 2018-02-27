@@ -1,0 +1,28 @@
+[
+    {
+        "name": "pingstatus-v1-product-APIGEE_ENVIRONMENT",
+        "apiResources": [
+            "/",
+            "/**"
+        ],
+        "approvalType": "auto",
+        "attributes": [
+            {
+                "name": "custom.description",
+                "value": "Product to test pingstatus API for APIGEE_ENVIRONMENT env"
+            }
+        ],
+        "description": "Product to test pingstatus-v1 API in APIGEE_ENVIRONMENT env",
+        "displayName": "pingstatus-v1-product-APIGEE_ENVIRONMENT",
+        "environments": [
+            "APIGEE_ENVIRONMENT"
+        ],
+        "proxies": [
+            "pingstatus-v1"
+        ],
+        "quota": "10000",
+        "quotaInterval": "1",
+        "quotaTimeUnit": "month",
+        "scopes": []
+    }  
+]
