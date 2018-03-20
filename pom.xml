@@ -53,6 +53,20 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>gcp-dev</id>
+			<properties>
+				<apigee.profile>gcp-dev</apigee.profile>
+				<apigee.env>dev</apigee.env>
+				<apigee.hosturl>http://35.227.105.210:8080</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>edge-aio</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>35.227.105.210:9001</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
@@ -91,6 +105,20 @@
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kkanaskie2016-test.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>2016-prod</id>
+			<properties>
+				<apigee.profile>2016-prod</apigee.profile>
+				<apigee.env>prod</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>kkanaskie2016</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>kkanaskie2016-prod.apigee.net</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>

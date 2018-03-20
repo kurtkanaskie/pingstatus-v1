@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "Ping Status",
-        "version": "12.0.0",
+        "version": "1.0.0",
         "title": "pingstatus-v1",
         "contact": {
             "email": "kurtkanaskie@google.com"
@@ -13,16 +13,25 @@
         "https"
     ],
     "basePath": "/pingstatus/v1",
-    "parameters" : { },
+    "parameters": {
+        "x-apikey": {
+          "in": "header",
+          "name": "X-APIKey",
+          "description": "API Key also known as client_id.",
+          "required": true,
+          "type": "string",
+          "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg"
+        }
+    },
     "paths": {
         "/ping": {
             "get": {
-                "operationId": "get-ping",
+                "operationId": "getPing",
                 "description": "Returns a message indicating the API proxy is operational",
                 "consumes": [],
                 "produces": [ "application/json" ],
                 "parameters": [
-                    { "in": "header", "name": "X-APIKey", "description": "Application Identifier also known as API Key", "required": true, "type": "string", "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg" }
+                    {"$ref": "#/parameters/x-apikey" }
                 ],
                 "responses": {
                     "200": { "description": "OK", "schema": { "$ref": "#/definitions/PingResponse" } },
@@ -34,14 +43,14 @@
         },
         "/status": {
             "get": {
-                "operationId": "get-status",
+                "operationId": "getStatus",
                 "description": "Returns a message indicating the API proxy and back end is operational",
                 "consumes": [],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
-                    { "in": "header", "name": "X-APIKey", "description": "Application Identifier also known as API Key", "required": true, "type": "string", "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg" }
+                    {"$ref": "#/parameters/x-apikey" }
                 ],
                 "responses": {
                     "200": { "description": "OK", "schema": { "$ref": "#/definitions/StatusResponse" } },
@@ -55,7 +64,7 @@
         "ErrorResponse": {
             "type": "object",
             "properties": {
-                "code": { "description": "Error code", "type": "string" },
+                "code": { "description": "Error code", "type": "string", "default":"400.000" },
                 "message": { "description": "Error message", "type": "string" },
                 "info": { "description": "Where to find more inforamation", "type": "string" },
                 "detail": { "description": "Detail error information", "type": "string" }
@@ -64,13 +73,12 @@
         "PingResponse": {
             "type": "object",
             "properties": {
-                "environment": { "description": "The name of the environment", "type": "string" },
-                "apiproxy": { "description": "The name of the API Proxy", "type": "string" },
-                "client": { "description": "The IP address of the client calling the API", "type": "string" },
-                "time": { "description": "The time when the request was processed", "type": "string" },
-                "latency": { "description": "The total response time to process the API request", "type": "string" },
-                "message": { "description": "Message from the endpoint, gaurenteed to be PONG", "type": "string" },
-                "merchantId": { "description": "The Merchant Identifier provided in the request header", "type": "string" }
+                "environment": { "default":"test", "description": "The name of the environment", "type": "string" },
+                "apiproxy": { "default":"pingstatus-v1", "description": "The name of the API Proxy", "type": "string" },
+                "client": { "default":"1234567890", "description": "The IP address of the client calling the API", "type": "string" },
+                "time": { "default":42, "description": "The time when the request was processed", "type": "string" },
+                "latency": { "default":42, "description": "The total response time to process the API request", "type": "string" },
+                "message": { "default":"PONG", "description": "Message from the endpoint, gaurenteed to be PONG", "type": "string" }
             }
         },
         "StatusResponse": {
