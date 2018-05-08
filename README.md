@@ -234,6 +234,8 @@ Export App keys
 * mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
 
 ## All at once using resources
+Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
+
 * mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ## Just run the tests
