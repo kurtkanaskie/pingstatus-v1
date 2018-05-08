@@ -233,8 +233,8 @@ Install proxy and update all configs, no integration or jmeter tests
 Export App keys
 * mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
 
-##All at once
-* mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+## All at once using resources
+* mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-##Just run the tests
+## Just run the tests
 * mvn -Plocal-aio-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
