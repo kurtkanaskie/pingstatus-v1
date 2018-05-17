@@ -11,14 +11,14 @@ echo BRANCH: $GIT_BRANCH
 EdgeEnv="" 
 EdgeDeploySuffix="" 
 
-if [[ "$GIT_BRANCH" == /origin/master ]]
+if [[ "$GIT_BRANCH" == origin/master ]]
 then
 	export EdgeEnv="test"
-elif [[ "$GIT_BRANCH" = /origin/feature/* ]]
+elif [[ "$GIT_BRANCH" = origin/feature/* ]]
 then
 	export EdgeEnv="test"
 	export EdgeDeploySuffix=${GIT_BRANCH#/origin/feature/}
-elif [[ "$GIT_BRANCH" == /origin/prod ]]
+elif [[ "$GIT_BRANCH" == origin/prod ]]
 then
 	export EdgeEnv="prod"
 else
