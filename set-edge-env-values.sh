@@ -8,24 +8,30 @@
 
 echo BRANCH: $GIT_BRANCH
 
-EdgeEnv="" 
+EdgeProfile="" 
 EdgeDeploySuffix="" 
 
 if [[ "$GIT_BRANCH" == origin/master ]]
 then
-	export EdgeEnv="test"
+	export EdgeProfile="training-test"
+
 elif [[ "$GIT_BRANCH" = origin/feature/* ]]
 then
-	export EdgeEnv="test"
-	export EdgeDeploySuffix=${GIT_BRANCH#/origin/feature/}
+	export EdgeProfile="training-test"
+	# Get the feature name, tmp removes up to and including first /, do that again to get suffix
+	tmp=${GIT_BRANCH#*/}
+	export EdgeDeploySuffix=${tmp#*/}
+
 elif [[ "$GIT_BRANCH" == origin/prod ]]
 then
-	export EdgeEnv="prod"
+	export EdgeProfile="training-prod"
 else
 	echo BRANCH PATH NOT FOUND
 	exit 1
 fi
 
-echo EdgeEnv: $EdgeEnv
+echo EdgeProfile: $EdgeProfile
 echo EdgeDeploySuffix: $EdgeDeploySuffix
 
+echo EdgeProfile=$EdgeProfile > edge.properties
+echo EdgeDeploySuffix=$EdgeDeploySuffix >> edge.properties
