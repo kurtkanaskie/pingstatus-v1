@@ -33,3 +33,5 @@ fi
 echo EdgeProfile: $EdgeProfile
 echo EdgeDeploySuffix: $EdgeDeploySuffix
 
+echo export EdgeProfile=$EdgeProfile > edge.properties
+echo export EdgeProfile=$EdgeDeploySuffix >> edge.properties
