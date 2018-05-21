@@ -5,23 +5,19 @@
     <Set>
         <Payload contentType="application/json">
 {
+    "organization": "{organization.name}",
     "environment": "{environment.name}",
+    "application": "{verifyapikey.VA-header.developer.app.name}",
+    "product": "{verifyapikey.VA-header.apiproduct.name}",
     "apiproxy": "{apiproxy.name}",
     "basepath": "{proxy.basepath}",
     "suffix": "{proxy.pathsuffix}",
     "client": "{client.host}",
-    "clientCN":"{client.cn}",
     "time": "{system.time}",
     "proxyLatency": {total_client_time},
     "targetLatency": {total_target_time},
     "latency": {total_request_time},
     "message":"STATUS",
-    "backendHeaders":{
-        "X-Client-Cert":"{response.header.X-Client-Cert}",
-        "X-Client-Serial":"{response.header.X-Client-Serial}",
-        "X-Client-DN":"{response.header.X-Client-DN}",
-        "X-Client-CN":"{response.header.X-Client-CN}"
-    },
     "backendMessage":{response.content}
 }
 </Payload>

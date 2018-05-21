@@ -39,6 +39,34 @@
 	-->
 	<profiles>
 		<profile>
+			<id>local-aio-test</id>
+			<properties>
+				<apigee.profile>local-aio-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>http://localhost:8080</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>trial</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>localhost:9001</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>gcp-dev</id>
+			<properties>
+				<apigee.profile>gcp-dev</apigee.profile>
+				<apigee.env>dev</apigee.env>
+				<apigee.hosturl>http://35.227.105.210:8080</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>edge-aio</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>35.227.105.210:9001</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
@@ -50,7 +78,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-				<clientId>jbibSZW712N5qqjaWMpAD3HM9eMeclMg</clientId>
 			</properties>
 		</profile>
 		<profile>
@@ -65,9 +92,37 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
 				<api.testtag>~@health</api.testtag>
-				<clientId>AE6cFBYSuvHX1YVW6UtCdqOMQoBuMIyW</clientId>
 			</properties>
-		</profile><profile>
+		</profile>
+		<profile>
+			<id>2016-test</id>
+			<properties>
+				<apigee.profile>2016-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>kkanaskie2016</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>kkanaskie2016-test.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>2016-prod</id>
+			<properties>
+				<apigee.profile>2016-prod</apigee.profile>
+				<apigee.env>prod</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>kkanaskie2016</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>kkanaskie2016-prod.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>demo15-test</id>
 			<properties>
 				<apigee.profile>demo15-test</apigee.profile>
@@ -79,7 +134,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
 				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>lxHNz4MYg4bHkU0LLdqvxcFOKqO1Nc5Q</clientId>
 			</properties>
 		</profile>	
 	</profiles>
@@ -140,6 +194,7 @@
 									<directory>${project.root.dir}</directory>
 									<filtering>true</filtering>
 									<includes>
+										<include>resources/**</include>
 										<include>apiproxy/**</include>
 										<include>test/integration/**</include>
 										<include>test/performance/**</include>
@@ -152,6 +207,26 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- rename an env org
+			<plugin>
+				<groupId>com.coderplus.maven.plugins</groupId>
+				<artifactId>copy-rename-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>copy-and-rename-file</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>rename</goal>
+						</goals>
+						<configuration>
+							<sourceFile>${project.build.directory}/file-to-rename.txt</sourceFile>
+							<destinationFile>${project.build.directory}/renamed-file.txt</destinationFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			-->
 
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -169,10 +244,11 @@
 				<configuration>
 					<basedir>${target.root.dir}</basedir>
 					<includes>
+						<include>apiproxy/pingstatus-v1.xml</include>
 						<include>apiproxy/proxies/default.xml</include>
 						<include>test/integration/test-config.json</include>
-						<include>apiproxy/pingstatus-v1.xml</include>
-						<include>test/performance/testdata.csv</include>
+						<include>resources/edge/org/apiProducts.json</include>
+						<include>resources/edge/org/developerApps.json</include>
 					</includes>
 					<replacements>
 						<replacement>
@@ -184,7 +260,7 @@
 							<value>pingstatus-${deployment.suffix}v1</value>
 						</replacement>
 						<replacement>
-							<token>kurtkanaskietrainer-trial-test.apigee.net</token>
+							<token>API_NORTHBOUND_DOMAIN</token>
 							<value>${api.northbound.domain}</value>
 						</replacement>
 						<replacement>
@@ -192,8 +268,8 @@
 							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
 						</replacement>
 						<replacement>
-							<token>REPLACE-CLIENTID</token>
-							<value>${clientId}</value>
+							<token>APIGEE_ENVIRONMENT</token>
+							<value>${apigee.env}</value>
 						</replacement>
 					</replacements>
 				</configuration>
@@ -270,6 +346,13 @@
                             <goal>apps</goal>
                         </goals>
                     </execution>
+                    <execution>
+						<id>export-config-app</id>
+						<phase>install</phase>
+						<goals>
+							<goal>exportAppKeys</goal>
+						</goals>
+					</execution>
                 </executions>
             </plugin>   
 
@@ -293,7 +376,7 @@
 						</configuration>
 					</execution>
 					<!-- run apigeelint -->
-					<!-- its got issues on Jenkins 
+					<!-- its got issues on Jenkins -->
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>
@@ -307,7 +390,7 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
-					-->
+					<!-- -->
 					<!-- run unit tests -->
 					<execution>
 						<id>unit</id>
@@ -406,6 +489,7 @@
 						</goals>
 					</execution>
 					<!-- leave the target dir for debugging, post mortem -->
+					<!--
 					<execution>
 						<id>auto-clean-install</id>
 						<phase>install</phase>
@@ -413,7 +497,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					<!-- -->
+					-->
 				</executions>
 			</plugin>
 		</plugins>

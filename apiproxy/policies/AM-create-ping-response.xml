@@ -5,12 +5,16 @@
     <Set>
         <Payload contentType="application/json">
 {
+    "organization": "{organization.name}",
     "environment": "{environment.name}",
+    "application": "{verifyapikey.VA-header.developer.app.name}",
+    "product": "{verifyapikey.VA-header.apiproduct.name}",
     "apiproxy": "{apiproxy.name}",
+    "basepath": "{proxy.basepath}",
+    "suffix": "{proxy.pathsuffix}",
     "client": "{client.host}",
-    "clientCN":"{client.cn}",
     "time": "{system.time}",
-    "latency": "{total_request_time}",
+    "latency": {total_request_time},
     "message":"PONG"
 }
 </Payload>
