@@ -6,7 +6,7 @@
 # /origin/feature/jira1
 # /origin/prod
 
-echo BRANCH: $GIT_BRANCH
+# echo BRANCH: $GIT_BRANCH
 
 EdgeProfile="" 
 EdgeDeploySuffix="" 
@@ -30,8 +30,6 @@ else
 	exit 1
 fi
 
-echo EdgeProfile: $EdgeProfile
-echo EdgeDeploySuffix: $EdgeDeploySuffix
-
-echo EdgeProfile=$EdgeProfile > edge.properties
-echo EdgeDeploySuffix=$EdgeDeploySuffix >> edge.properties
+# Expect to redirect output from this script to an "edge.properties" file.
+echo EdgeProfile=$EdgeProfile 
+echo EdgeDeploySuffix=$EdgeDeploySuffix 
