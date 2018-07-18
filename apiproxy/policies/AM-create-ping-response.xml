@@ -7,6 +7,9 @@
 {
     "organization": "{organization.name}",
     "environment": "{environment.name}",
+    "region":"{system.region.name}",
+    "pod":"{system.pod.name}",
+    "messageProcessor":"{system.uuid}",
     "application": "{verifyapikey.VA-header.developer.app.name}",
     "product": "{verifyapikey.VA-header.apiproduct.name}",
     "apiproxy": "{apiproxy.name}",
@@ -15,7 +18,15 @@
     "client": "{client.host}",
     "time": "{system.time}",
     "latency": {total_request_time},
-    "message":"PONG"
+    "message":"PONG",
+    "client.cn":"{client.cn}",
+    "client.country":"{client.country}",
+    "client.email.address":"{client.email.address}",
+    "client.organization":"{client.organization}",
+    "client.organization.unit":"{client.organization.unit}",
+    "client.locality":"{client.locality}",
+    "client.state":"{client.state}",
+    "client.ssl.enabled":"{client.ssl.enabled}"
 }
 </Payload>
         <StatusCode>200</StatusCode>
