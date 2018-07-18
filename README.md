@@ -1,6 +1,6 @@
-# Ping and Status
+# Ping and Status API
 
-Change for jira1
+Change for master demo 2018-07-18
 
 ## Overview
 Each proxy source code module is self contained with the actual Apigee Edge proxy, config files for Edge Management API calls (e.g. KVMs, target servers), swagger spec and tests.

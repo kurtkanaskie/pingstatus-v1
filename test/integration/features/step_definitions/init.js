@@ -10,7 +10,7 @@ console.log('apiconfig: [' + config.apiconfig.domain + ', ' + config.apiconfig.b
 module.exports = function() {
     // cleanup before every scenario
     this.Before(function(scenario, callback) {
-        this.apickli = new apickli.Apickli('http', config.apiconfig.domain + config.apiconfig.basepath);
+        this.apickli = new apickli.Apickli('https', config.apiconfig.domain + config.apiconfig.basepath);
         
         this.apickli.storeValueInScenarioScope("apiproxy", config.apiconfig.apiproxy);
         this.apickli.storeValueInScenarioScope("basepath", config.apiconfig.basepath);

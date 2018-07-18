@@ -67,6 +67,48 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>amer-poc15-test</id>
+			<properties>
+				<apigee.profile>amer-poc15-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>amer-poc15</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>amer-poc15-test.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>amer-poc15-prod</id>
+			<properties>
+				<apigee.profile>amer-poc15-test</apigee.profile>
+				<apigee.env>prod</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>amer-poc15</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>amer-poc15-prod.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>demo33-test</id>
+			<properties>
+				<apigee.profile>demo33</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>demo33</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>demo33-test.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
@@ -92,6 +134,20 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
 				<api.testtag>~@health</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>gcpconnect-test</id>
+			<properties>
+				<apigee.profile>gcpconnect-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>gcpconnect</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>gcpconnect-test.apigee.net</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
 		<profile>
