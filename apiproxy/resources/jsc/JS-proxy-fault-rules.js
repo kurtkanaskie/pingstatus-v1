@@ -85,7 +85,7 @@ switch(faultName) {
             var uri = context.getVariable("proxy.pathsuffix");
             var verb = context.getVariable("request.verb");
             responseCode = "404";
-            reasonPhrase = "Method Not Allowed";
+            reasonPhrase = "Not Found";
             code = "404.001";
             description = "No resource for " + verb + " " + uri;
         } else {

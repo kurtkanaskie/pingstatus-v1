@@ -37,6 +37,9 @@
         <LoadBalancer>
             <Server name="pingstatus-v1"/>
         </LoadBalancer>
+        <SSLInfo>
+            <Enabled>true</Enabled>
+        </SSLInfo>
         <Path>{flow.target.basepath}/{flow.target.pathsuffix}</Path>
     </HTTPTargetConnection>
 </TargetEndpoint>
