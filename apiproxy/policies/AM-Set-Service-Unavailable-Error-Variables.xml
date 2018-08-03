@@ -4,14 +4,14 @@
     <Properties/>
     <Set>
         <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
-            {
-            "fault": {
-            "faultstring": "Simulated The Service is temporarily unavailable",
-            "detail": {
+{
+    "fault": {
+        "faultstring": "Simulated The Service is temporarily unavailable",
+        "detail": {
             "errorcode": "com.apigee.transport.errors.HttpAdaptorException"
-            }
-            }
-            }
+        }
+    }
+}
         </Payload>
     </Set>
     <AssignVariable>
