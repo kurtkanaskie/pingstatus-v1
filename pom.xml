@@ -115,10 +115,10 @@
 				<apigee.env>test</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
+				<apigee.org>${env.APIGEE_ORG}</apigee.org>
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
+				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
@@ -132,7 +132,7 @@
 				<apigee.org>${env.APIGEE_ORG}</apigee.org>
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
+				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
 				<api.testtag>~@health</api.testtag>
 			</properties>
 		</profile>
@@ -305,6 +305,7 @@
 						<include>test/integration/test-config.json</include>
 						<include>resources/edge/org/apiProducts.json</include>
 						<include>resources/edge/org/developerApps.json</include>
+						<include>resources/edge/org/developers.json</include>
 					</includes>
 					<replacements>
 						<replacement>
