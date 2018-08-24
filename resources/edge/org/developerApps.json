@@ -1,5 +1,5 @@
 {
-    "kurtkanaskie+app@google.com": [
+    "cicd-developer-APIGEE_ENVIRONMENT@google.com": [
         {
             "name": "pingstatus-v1-app-APIGEE_ENVIRONMENT",
             "apiProducts": [ "pingstatus-v1-product-APIGEE_ENVIRONMENT" ],

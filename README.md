@@ -187,23 +187,29 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 ### Maven $HOME/.m2/settings.xml 
 ```
 <profile>
-            <id>test</id>
-            <properties>
-                <env.APIGEE_ORG>yourorgname</env.APIGEE_ORG>
-                <env.APIGEE_USERNAME>yourusername</env.APIGEE_USERNAME>
-                <env.APIGEE_PASSWORD>yourpassword</env.APIGEE_PASSWORD>
-                <env.APIGEE_NORTHBOUND_DOMAIN>yourorgname-test.apigee.net</env.APIGEE_NORTHBOUND_DOMAIN>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <env.APIGEE_ORG>yourorgname</env.APIGEE_ORG>
-                <env.APIGEE_USERNAME>yourusername</env.APIGEE_USERNAME>
-                <env.APIGEE_PASSWORD>yourpassword</env.APIGEE_PASSWORD>
-                <env.APIGEE_NORTHBOUND_DOMAIN>yourorgname-prod.apigee.net</env.APIGEE_NORTHBOUND_DOMAIN>
-            </properties>
-        </profile>
+    <id>test</id>
+    <!-- These are also the values for environment variables used by set-edge-env-values.sh for Jenkins -->
+    <properties>
+        <EdgeOrg>yourorgname</EdgeOrg>
+        <EdgeEnv>test</EdgeEnv>
+        <EdgeUsername>yourusername</EdgeUsername>
+        <EdgePassword>yourpassword</EdgePassword>
+        <EdgeNorthboundDomain>yourorgname-yourenv.apigee.net</EdgeNorthboundDomain>
+        <EdgeAuthtype>oauth</EdgeAuthtype>
+    </properties>
+</profile>
+<profile>
+    <id>prod</id>
+    <properties>
+        <EdgeOrg>yourorgname</EdgeOrg>
+        <EdgeEnv>prod</EdgeEnv>
+        <EdgeUsername>yourusername</EdgeUsername>
+        <EdgePassword>yourpassword</EdgePassword>
+        <EdgeNorthboundDomain>yourorgname-yourenv.apigee.net</EdgeNorthboundDomain>
+        <EdgeAuthtype>oauth</EdgeAuthtype>
+    </properties>
+</profile>
+        
 ```
 
 ### Frequently used commands
@@ -233,7 +239,7 @@ Install proxy and update all configs, no integration or jmeter tests
 * mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -DskipPerformanceTests=true
 
 Export App keys
-* mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
+* mvn -Ptraining-test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
 
 ## All at once using resources
 Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
@@ -241,4 +247,4 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ## Just run the tests
-* mvn -Plocal-aio-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+* mvn -Ptraining-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping

@@ -5,7 +5,7 @@
         "entry": [
             {
                 "name": "target.basepath",
-                "value": "kurtkanaskietraining/sandbox"
+                "value": "pingstatusmock/v1"
             }
         ]
     }

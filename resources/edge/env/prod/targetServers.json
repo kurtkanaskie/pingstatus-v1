@@ -1,7 +1,7 @@
 [
     {
         "name": "pingstatus-v1",
-        "host": "apibaas-trial.apigee.net",
+        "host": "kurtkanaskietrainer-trial-test.apigee.net",
         "isEnabled": true,
         "port": 443,
         "sSLInfo": {

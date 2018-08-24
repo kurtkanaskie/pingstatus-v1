@@ -9,7 +9,8 @@
 {
     "code": "{flow.error.code}",
     "message": "{flow.error.description}",
-    "info": "https://developer.company.com/errors#{flow.error.code}"
+    "info": "https://developer.company.com/errors#{flow.error.code}",
+    "details": "faultstring: {error.message}"
 }
 </Payload>
         <StatusCode>{flow.error.status}</StatusCode>

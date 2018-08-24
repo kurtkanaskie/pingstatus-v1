@@ -1,9 +1,9 @@
 [
     {
-        "email": "kurtkanaskie+app@google.com",
-        "firstName": "Kurt App",
-        "lastName": "Kanaskie",
-        "userName": "kurtappkanaskie",
+        "email": "cicd-developer-APIGEE_ENVIRONMENT@google.com",
+        "firstName": "CICD APIGEE_ENVIRONMENT",
+        "lastName": "Developer",
+        "userName": "cicd-developer-APIGEE_ENVIRONMENT",
         "attributes": [
             {
                 "name": "note",
