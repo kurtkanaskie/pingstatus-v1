@@ -11,6 +11,14 @@ Feature: Error handling
         Then response code should be 404
         And response header Content-Type should be application/json
         And response body path $.message should be No resource for GET /foo
+
+    @post-foo
+    Scenario: DELETE /foo request not found
+        Given I set X-APIKey header to `clientId`
+        When I DELETE /foo
+        Then response code should be 404
+        And response header Content-Type should be application/json
+        And response body path $.message should be No resource for DELETE /foo
         
 	@foobar
     Scenario: GET /foo/bar request not found

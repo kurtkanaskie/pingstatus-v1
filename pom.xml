@@ -39,6 +39,42 @@
 	-->
 	<profiles>
 		<profile>
+			<id>test</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<!-- Jenkins command:
+				install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} -Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
+			-->
+			<properties>
+				<apigee.profile>test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<!-- Jenkins command:
+				install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} -Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
+			-->
+			<properties>
+				<apigee.profile>prod</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@health</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
@@ -49,7 +85,7 @@
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
 			</properties>
 		</profile>
 		<profile>
@@ -63,7 +99,7 @@
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-prod.apigee.net</api.northbound.domain>
-				<api.testtag>~@health</api.testtag>
+				<api.testtag>@health</api.testtag>
 			</properties>
 		</profile>
 		<profile>
@@ -538,6 +574,7 @@
 				<version>2.5</version>
 
 				<executions>
+					<!-- Don't clean on init for iteration on tests
 					<execution>
 						<id>auto-clean-init</id>
 						<phase>initialize</phase>
@@ -545,6 +582,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
+					-->
 					<!-- leave the target dir for debugging, post mortem -->
 					<!--
 					<execution>

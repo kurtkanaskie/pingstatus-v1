@@ -187,23 +187,29 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 ### Maven $HOME/.m2/settings.xml 
 ```
 <profile>
-            <id>test</id>
-            <properties>
-                <env.APIGEE_ORG>yourorgname</env.APIGEE_ORG>
-                <env.APIGEE_USERNAME>yourusername</env.APIGEE_USERNAME>
-                <env.APIGEE_PASSWORD>yourpassword</env.APIGEE_PASSWORD>
-                <env.APIGEE_NORTHBOUND_DOMAIN>yourorgname-test.apigee.net</env.APIGEE_NORTHBOUND_DOMAIN>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <env.APIGEE_ORG>yourorgname</env.APIGEE_ORG>
-                <env.APIGEE_USERNAME>yourusername</env.APIGEE_USERNAME>
-                <env.APIGEE_PASSWORD>yourpassword</env.APIGEE_PASSWORD>
-                <env.APIGEE_NORTHBOUND_DOMAIN>yourorgname-prod.apigee.net</env.APIGEE_NORTHBOUND_DOMAIN>
-            </properties>
-        </profile>
+    <id>test</id>
+    <!-- These are also the values for environment variables used by set-edge-env-values.sh for Jenkins -->
+    <properties>
+        <EdgeOrg>yourorgname</EdgeOrg>
+        <EdgeEnv>test</EdgeEnv>
+        <EdgeUsername>yourusername</EdgeUsername>
+        <EdgePassword>yourpassword</EdgePassword>
+        <EdgeNorthboundDomain>yourorgname-yourenv.apigee.net</EdgeNorthboundDomain>
+        <EdgeAuthtype>oauth</EdgeAuthtype>
+    </properties>
+</profile>
+<profile>
+    <id>prod</id>
+    <properties>
+        <EdgeOrg>yourorgname</EdgeOrg>
+        <EdgeEnv>prod</EdgeEnv>
+        <EdgeUsername>yourusername</EdgeUsername>
+        <EdgePassword>yourpassword</EdgePassword>
+        <EdgeNorthboundDomain>yourorgname-yourenv.apigee.net</EdgeNorthboundDomain>
+        <EdgeAuthtype>oauth</EdgeAuthtype>
+    </properties>
+</profile>
+        
 ```
 
 ### Frequently used commands
