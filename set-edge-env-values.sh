@@ -33,7 +33,7 @@ else
 	exit 1
 fi
 export EdgeOrg="kurtkanaskietrainer-trial"
-export EdgeNorthboundDomain=$EdgeOrg-$EdgeEnv
+export EdgeNorthboundDomain=$EdgeOrg-$EdgeEnv.apigee.net
 # Expect to redirect output from this script to an "edge.properties" file.
 echo EdgeOrg=$EdgeOrg
 echo EdgeEnv=$EdgeEnv
