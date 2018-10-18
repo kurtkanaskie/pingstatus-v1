@@ -86,6 +86,10 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<!--
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>3</apigee.override.delay>
+				-->
 			</properties>
 		</profile>
 		<profile>
@@ -442,6 +446,9 @@
                     <execution>
 						<id>export-config-app</id>
 						<phase>install</phase>
+						<configuration>
+                            <skip>${skip.export}</skip>
+                        </configuration>
 						<goals>
 							<goal>exportAppKeys</goal>
 						</goals>
@@ -572,9 +579,11 @@
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.5</version>
-
+				<configuration>
+					<skip>${skip.clean}</skip>
+				</configuration>
 				<executions>
-					<!-- Don't clean on init for iteration on tests
+					<!-- Don't clean on init for iteration on tests -->
 					<execution>
 						<id>auto-clean-init</id>
 						<phase>initialize</phase>
@@ -582,9 +591,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					-->
 					<!-- leave the target dir for debugging, post mortem -->
-					<!--
 					<execution>
 						<id>auto-clean-install</id>
 						<phase>install</phase>
@@ -592,7 +599,6 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					-->
 				</executions>
 			</plugin>
 		</plugins>

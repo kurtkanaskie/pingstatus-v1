@@ -246,5 +246,10 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 
 * mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-## Just run the tests
-* mvn -Ptraining-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+### Skip clean and export
+* mvn -P training-test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+## Just run the tests (after skip.clen)
+* mvn -Ptraining-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+* mvn -P local-aio-test process-resources -Ddeployment.suffix= -Dskip.clean=true exec:exec@integration -Dapi.testtag=@health
+
