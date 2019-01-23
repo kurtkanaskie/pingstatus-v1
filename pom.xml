@@ -453,6 +453,9 @@
                     <execution>
                         <id>create-config-app</id>
                         <phase>install</phase>                        
+						<configuration>
+                            <skip>${skip.apps}</skip>
+                        </configuration>
                         <goals>
                             <goal>apps</goal>
                         </goals>
