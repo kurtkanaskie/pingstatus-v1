@@ -239,19 +239,19 @@ Install proxy and update all configs, no integration or jmeter tests
 * mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -DskipPerformanceTests=true
 
 Export App keys
-* mvn -Ptraining-test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
+* mvn -P test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
 
-## All at once using resources
+## All at once full build and deploy
 Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
 
-* mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+* mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-### Skip clean and export
-* mvn -P training-test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+### Skip clean and export - just install, deploy and test
+* mvn -P test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-## Just run the tests (after skip.clen)
-* mvn -Ptraining-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
-* mvn -P local-aio-test process-resources -Ddeployment.suffix= -Dskip.clean=true exec:exec@integration -Dapi.testtag=@health
+## Just run the tests (after skip.clen) - for test iterations
+* mvn -P test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+* mvn -P test process-resources -Ddeployment.suffix= -Dskip.clean=true exec:exec@integration -Dapi.testtag=@health
 
 
 ## Skip Apps and Overwrite latest revision
