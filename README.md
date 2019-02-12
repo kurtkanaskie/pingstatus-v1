@@ -1,9 +1,25 @@
 # Ping and Status API
+This proxy demonstrates a simple design to demonstrate a full CI/CD lifecycle.
+It uses the following health check or monitoring endpoints
+* GET /ping - response indicates that the proxy is operational
+* GET /status - response indicates the the backend is operational
 
-Change for master demo 2018-07-26 3
+These endpoints can then be used by API Monitorying with Edge to send notifications when something is wrong.
+
+## Disclaimer
+
+This example is not an official Google product, nor is it part of an official Google product.
+
+## License
+
+This material is copyright 2019, Google LLC.and is licensed under the Apache 2.0 license. 
+See the [LICENSE](LICENSE) file.
+
+This code is open source.
 
 ## Overview
-Each proxy source code module is self contained with the actual Apigee Edge proxy, config files for Edge Management API calls (e.g. KVMs, target servers), swagger spec and tests.
+Each proxy is managed as a single source code module that is self contained with the actual Apigee Edge proxy, config files for Edge Management API calls (e.g. KVMs, target servers), Open API Specification (OAS) and tests (status, unit, integration).
+
 The key components enabling continuous integration are:
 * Jenkins - build engine
 * Maven - builder
