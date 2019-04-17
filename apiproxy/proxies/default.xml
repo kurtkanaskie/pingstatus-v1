@@ -7,10 +7,9 @@
             <Name>AM-set-proxy-default-error-vars</Name>
         </Step>
         <Step>
-            <!-- This will still work with CORS because using error code and status from RF-CORS-Pre-Flight in Fault Rules JS -->
             <Name>AM-set-standard-error-response</Name>
         </Step>
-    <AlwaysEnforce>true</AlwaysEnforce>
+        <AlwaysEnforce>true</AlwaysEnforce>
     </DefaultFaultRule>
     <FaultRules>
         <FaultRule name="ProxyFaultRules">
@@ -40,14 +39,15 @@
         <Flow name="ping">
             <Description>proxy health check</Description>
             <Request>
+            </Request>
+            <Response>
                 <Step>
                     <Name>JS-set-time-data</Name>
                 </Step>
                 <Step>
                     <Name>AM-create-ping-response</Name>
                 </Step>
-            </Request>
-            <Response/>
+            </Response>
             <Condition>(proxy.pathsuffix MatchesPath "/ping") and (request.verb = "GET")</Condition>
         </Flow>
         <Flow name="status">

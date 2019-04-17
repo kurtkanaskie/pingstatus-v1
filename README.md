@@ -45,11 +45,8 @@ Jenkins projects are set up to run using Maven and Maven runs via configurations
 * git push origin prod
 * git checkout master
 
-### Feature
-* git checkout -b feature/jira1 --- (MAKE changes for feature/jira1)
-
-#### Test locally
-Set your $HOME/.m2/settings.xml
+#### Initial Deploy
+Set your $HOME/.m2/settings.xml  
 Example:
 ```
 <?xml version="1.0"?>
@@ -74,16 +71,12 @@ Example:
     </profiles>
 </settings>
 ```
-##### Initial build and deploy to pingstatus-"yourusername"v1
-* mvn -X install -Ptest -Dcommit=local -Dbranch=feature/jira1
-##### Run unit tests and integration tests
-* mvn process-resources exec:exec@unit -Ptest
-* mvn process-resources exec:exec@integration -Ptest
-##### To run integration tests in other environments
-* mvn process-resources exec:exec@integration -Ptest -Ddeployment.suffix=
-* mvn process-resources exec:exec@integration -Pprod -Ddeployment.suffix=
-
-Once you're happy with the "new" tests locally and verify the feature "doesn't work" in test and prod, then move on to building via Jenkins.
+##### Initial build and deploy to pingstatus-v1
+```
+mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+```
+### Feature
+* git checkout -b feature/jira1 --- (MAKE changes for feature/jira1)
 
 #### Test via Jenkins
 * git commit -am  "Added changes for feature1"
@@ -118,13 +111,19 @@ Or using this:
 
 ## Maven
 ### Jenkins Commands
-The Jenkins build server runs Maven with this command for each of the feature branches.
+The Jenkins build server runs Maven with this commands.
+
+Set Environment variables via script
+```
+./set-edge-env-values.sh > edge.properties
+```
+This allows a single build project to be used for each of the branches including feature branches.
 
 ```
-mvn -Pmy-test clean install -Dapi.testtag=@intg,@health
+install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} -Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
 ```
 
-Note the lack of `-deployment.suffix=`. That is so the build and deploy to Apigee creates a separate proxy with a separate basepath to allow independent feature development. Your proxy will show up with a name (e.g. pingstatus-${user.name}v1) and basepath (e.g. /pingstatus/${user.name}v1).
+Note the use of `-deployment.suffix=`. That is so the build and deploy to Apigee creates a separate proxy with a separate basepath to allow independent feature development. Your proxy will show up with a name (e.g. pingstatus-${user.name}v1) and basepath (e.g. /pingstatus/${user.name}v1).
 
 For other environments (e.g. test, prod) the `-deployment.suffix=` is set blank, so the build puts the proxy into the final form with the final basepath (e.g. pingstatus-v1, /pingstatus/v1).
 ```
@@ -226,6 +225,7 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 * diff -q --suppress-common-lines -r --side-by-side apiproxy-prev apiproxy -W 240
 * diff --suppress-common-lines -r --side-by-side apiproxy-prev apiproxy -W 240
 
+## Specific Usage
 ### Maven $HOME/.m2/settings.xml
 ```
 <profile>
@@ -261,6 +261,10 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 
 ## Other commands for iterations
 
+### Full install and test, but skip cleaning target
+
+* mvn -X -P test install -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
 ### Skip clean and export - just install, deploy and test
 * mvn -P test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
@@ -282,4 +286,3 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
 * mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
 * mvn -P test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
-
