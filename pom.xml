@@ -387,6 +387,7 @@
 						<include>apiproxy/pingstatus-v1.xml</include>
 						<include>apiproxy/proxies/default.xml</include>
 						<include>test/integration/test-config.json</include>
+						<include>resources/edge/env/*/targetServers.json</include>
 						<include>resources/edge/org/apiProducts.json</include>
 						<include>resources/edge/org/developerApps.json</include>
 						<include>resources/edge/org/developers.json</include>
