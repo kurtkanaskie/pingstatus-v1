@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "devDependencies": {
     "apickli": "^1.7.0",
-    "apigeelint": "0.2.6",
+    "apigeelint": "0.2.8",
     "bluebird": "^3.3.5",
     "chai": "^3",
     "chai-fuzzy": "^1",

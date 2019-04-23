@@ -1,6 +1,7 @@
 /* globals print */
 /* globals context */
 var faultName = context.getVariable ("fault.name");
+var faultString = context.getVariable ("error.message");
 // var proxyName = context.getVariable ("apiproxy.name");
 if( faultName !== "RaiseFault" ) {
     var faultObj = JSON.parse(context.getVariable('message.content'));
@@ -116,7 +117,7 @@ switch(faultName) {
         responseCode = "500";
         reasonPhrase = "Internal Error";
         code = "500.001";
-        description = "Uncaught server error";
+        description = "Uncaught server error: " + faultString;
 }
 
 context.setVariable( "flow.error.status", responseCode );
