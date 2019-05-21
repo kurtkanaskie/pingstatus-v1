@@ -30,6 +30,7 @@
 }
 </Payload>
         <StatusCode>200</StatusCode>
+        <ReasonPhrase>OK</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
 </AssignMessage>

@@ -54,6 +54,7 @@
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>validate</apigee.options>
 			</properties>
 		</profile>
 		<profile>
@@ -72,13 +73,15 @@
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@health</api.testtag>
+				<apigee.options>validate,override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
 		</profile>
 		<profile>
 			<id>amer-demo13-test</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
-				<apigee.profile>test</apigee.profile>
+				<apigee.profile>amer-demo13-test</apigee.profile>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -93,7 +96,7 @@
 			<id>amer-demo13-prod</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
-				<apigee.profile>test</apigee.profile>
+				<apigee.profile>amer-demo13-prod</apigee.profile>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -102,6 +105,8 @@
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
 		</profile>
 		<profile>
@@ -116,10 +121,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
-				<!--
-				<apigee.options>override</apigee.options>
-				<apigee.override.delay>3</apigee.override.delay>
-				-->
 			</properties>
 		</profile>
 		<profile>
@@ -134,6 +135,8 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-prod.apigee.net</api.northbound.domain>
 				<api.testtag>@health</api.testtag>
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
 		</profile>
 		<profile>
