@@ -17,4 +17,5 @@
         <ReasonPhrase>{flow.error.reason}</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" type="response"/>
 </AssignMessage>

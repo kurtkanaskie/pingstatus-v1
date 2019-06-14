@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy revision="74" name="pingstatus-v1">
+<APIProxy revision="84" name="pingstatus-v1">
     <Basepaths>/pingstatus/v1</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
-    <CreatedAt>1555411797357</CreatedAt>
-    <CreatedBy>kurtkanaskie@google.com</CreatedBy>
-    <Description>@description</Description>
+    <CreatedAt>1528927796437</CreatedAt>
+    <CreatedBy>kurtkanaskie+jenkins@google.com</CreatedBy>
+    <Description>Added apiproxy.revision to responses.</Description>
     <DisplayName>pingstatus-v1</DisplayName>
-    <LastModifiedAt>1555411797357</LastModifiedAt>
+    <LastModifiedAt>1559230268186</LastModifiedAt>
     <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
-    <ManifestVersion>SHA-512:f2d5c2873f0b7526997f6d13dbf43b0a88785f2bd2838064e5d6dc76ae0776958c13fcffa5dbbda421d5d391c546dfe4bc69f78d1279c3888f40a4813c1d95f8</ManifestVersion>
+    <ManifestVersion>SHA-512:548c96e1a5cef4756e0d546059d5537f41f033d5943225daabe5476992913b59d6fe33728721a18f4490a7599494d5a1da3a9b09508cdbd7ba1e70c9b46de13a</ManifestVersion>
     <Policies>
         <Policy>AM-create-ping-response</Policy>
         <Policy>AM-create-status-response</Policy>

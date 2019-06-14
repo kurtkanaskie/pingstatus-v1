@@ -262,11 +262,22 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ## Other commands for iterations
 
 ### Full install and test, but skip cleaning target
-
 * mvn -X -P test install -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Skip clean and export - just install, deploy and test
 * mvn -P test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+### Just update Developers, Products and Apps
+* mvn -P test process-resources apigee-config:developers apigee-config:apiproducts apigee-config:apps apigee-config:exportAppKeys -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
+
+### Just update KVM
+* mvn -P hybrid-test process-resources apigee-config:kvms -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+
+### Just update Target Servers
+* mvn -P hybrid-test process-resources apigee-config:targetservers -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+
+### Export App keys
+* mvn -P hybrid-test apigee-config:exportAppKeys -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
 
 ### Export Apps and run the tests (after skip.clen)
 * mvn -P test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
@@ -281,8 +292,3 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn jshint:lint
 * mvn -Ptest exec:exec@unit
 
-* mvn -Ptest apigee-config:targetservers -Dapigee.config.options=update
-* mvn -Ptest apigee-config:developerapps -Dapigee.config.options=update
-* mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
-* mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
-* mvn -P test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys

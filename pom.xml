@@ -39,6 +39,21 @@
 	-->
 	<profiles>
 		<profile>
+			<id>hybrid-test</id>
+			<properties>
+				<apigee.profile>hybrid-test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>validate</apigee.options>
+			</properties>
+		</profile>
+		<profile>
 			<id>test</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<!-- Jenkins command:
@@ -447,7 +462,7 @@
             <plugin>
                 <groupId>com.apigee.edge.config</groupId>
                 <artifactId>apigee-config-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>1.3.2</version>
                 <executions>
                     <execution>
                         <id>create-config-cache</id>
