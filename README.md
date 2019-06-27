@@ -291,4 +291,5 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ### Infrequently used commands
 * mvn jshint:lint
 * mvn -Ptest exec:exec@unit
+* mvn -Ptest exec:exec@apigeelint
 
