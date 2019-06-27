@@ -4,11 +4,10 @@
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
     <CreatedAt>1528927796437</CreatedAt>
     <CreatedBy>kurtkanaskie+jenkins@google.com</CreatedBy>
-    <Description>Added apiproxy.revision to responses.</Description>
+    <Description>Added apiproxy.revision to responses. @description</Description>
     <DisplayName>pingstatus-v1</DisplayName>
     <LastModifiedAt>1559230268186</LastModifiedAt>
     <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
-    <ManifestVersion>SHA-512:548c96e1a5cef4756e0d546059d5537f41f033d5943225daabe5476992913b59d6fe33728721a18f4490a7599494d5a1da3a9b09508cdbd7ba1e70c9b46de13a</ManifestVersion>
     <Policies>
         <Policy>AM-create-ping-response</Policy>
         <Policy>AM-create-status-response</Policy>
