@@ -39,6 +39,21 @@
 	-->
 	<profiles>
 		<profile>
+			<id>hybrid-test</id>
+			<properties>
+				<apigee.profile>hybrid-test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>validate</apigee.options>
+			</properties>
+		</profile>
+		<profile>
 			<id>test</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<!-- Jenkins command:
@@ -54,6 +69,7 @@
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>validate</apigee.options>
 			</properties>
 		</profile>
 		<profile>
@@ -72,6 +88,40 @@
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@health</api.testtag>
+				<apigee.options>validate,override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
+			</properties>
+		</profile>
+		<profile>
+			<id>amer-demo13-test</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<properties>
+				<apigee.profile>amer-demo13-test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>amer-demo13-prod</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<properties>
+				<apigee.profile>amer-demo13-prod</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
 		</profile>
 		<profile>
@@ -100,6 +150,8 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-prod.apigee.net</api.northbound.domain>
 				<api.testtag>@health</api.testtag>
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
 		</profile>
 		<profile>
@@ -117,17 +169,31 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>gcp-dev</id>
+			<id>gcp-test</id>
 			<properties>
-				<apigee.profile>gcp-dev</apigee.profile>
-				<apigee.env>dev</apigee.env>
-				<apigee.hosturl>http://35.227.105.210:8080</apigee.hosturl>
+				<apigee.profile>gcp-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>http://35.243.181.209:8080</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>aio</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>35.243.181.209:9001</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>gcp-prod</id>
+			<properties>
+				<apigee.profile>gcp-prod</apigee.profile>
+				<apigee.env>prod</apigee.env>
+				<apigee.hosturl>http://35.243.181.209:8080</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>edge-aio</apigee.org>
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>35.227.105.210:9001</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
+				<api.northbound.domain>35.243.181.209:9001</api.northbound.domain>
+				<api.testtag>~@errorHandling,~@health</api.testtag>
 			</properties>
 		</profile>
 		<profile>
@@ -339,6 +405,7 @@
 						<include>apiproxy/pingstatus-v1.xml</include>
 						<include>apiproxy/proxies/default.xml</include>
 						<include>test/integration/test-config.json</include>
+						<include>resources/edge/env/*/targetServers.json</include>
 						<include>resources/edge/org/apiProducts.json</include>
 						<include>resources/edge/org/developerApps.json</include>
 						<include>resources/edge/org/developers.json</include>
@@ -395,7 +462,7 @@
             <plugin>
                 <groupId>com.apigee.edge.config</groupId>
                 <artifactId>apigee-config-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>1.3.2</version>
                 <executions>
                     <execution>
                         <id>create-config-cache</id>
@@ -435,6 +502,9 @@
                     <execution>
                         <id>create-config-app</id>
                         <phase>install</phase>                        
+						<configuration>
+                            <skip>${skip.apps}</skip>
+                        </configuration>
                         <goals>
                             <goal>apps</goal>
                         </goals>
@@ -442,6 +512,9 @@
                     <execution>
 						<id>export-config-app</id>
 						<phase>install</phase>
+						<configuration>
+                            <skip>${skip.export}</skip>
+                        </configuration>
 						<goals>
 							<goal>exportAppKeys</goal>
 						</goals>
@@ -572,9 +645,11 @@
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.5</version>
-
+				<configuration>
+					<skip>${skip.clean}</skip>
+				</configuration>
 				<executions>
-					<!-- Don't clean on init for iteration on tests
+					<!-- Don't clean on init for iteration on tests -->
 					<execution>
 						<id>auto-clean-init</id>
 						<phase>initialize</phase>
@@ -582,9 +657,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					-->
 					<!-- leave the target dir for debugging, post mortem -->
-					<!--
 					<execution>
 						<id>auto-clean-install</id>
 						<phase>install</phase>
@@ -592,7 +665,6 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					-->
 				</executions>
 			</plugin>
 		</plugins>

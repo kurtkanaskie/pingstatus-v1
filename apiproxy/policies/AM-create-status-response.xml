@@ -3,6 +3,9 @@
     <DisplayName>AM-create-status-response</DisplayName>
     <Properties/>
     <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
         <Payload contentType="application/json">
 {
     "organization": "{organization.name}",
@@ -10,6 +13,7 @@
     "application": "{verifyapikey.VA-header.developer.app.name}",
     "product": "{verifyapikey.VA-header.apiproduct.name}",
     "apiproxy": "{apiproxy.name}",
+    "apiproxyRevision": "{apiproxy.revision}",
     "basepath": "{proxy.basepath}",
     "suffix": "{proxy.pathsuffix}",
     "client": "{client.host}",
@@ -21,7 +25,9 @@
     "backendMessage":{response.content}
 }
 </Payload>
+        <StatusCode>200</StatusCode>
+        <ReasonPhrase>OK</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="request"/>
+    <AssignTo createNew="true"/>
 </AssignMessage>

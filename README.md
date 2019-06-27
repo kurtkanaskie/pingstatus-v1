@@ -1,9 +1,27 @@
 # Ping and Status API
+Change for demo
 
-Change for master demo 2018-07-26 3
+This proxy demonstrates a simple design to demonstrate a full CI/CD lifecycle.
+It uses the following health check or monitoring endpoints
+* GET /ping - response indicates that the proxy is operational
+* GET /status - response indicates the the backend is operational
+
+These endpoints can then be used by API Monitorying with Edge to send notifications when something is wrong.
+
+## Disclaimer
+
+This example is not an official Google product, nor is it part of an official Google product.
+
+## License
+
+This material is copyright 2019, Google LLC.and is licensed under the Apache 2.0 license.
+See the [LICENSE](LICENSE) file.
+
+This code is open source.
 
 ## Overview
-Each proxy source code module is self contained with the actual Apigee Edge proxy, config files for Edge Management API calls (e.g. KVMs, target servers), swagger spec and tests.
+Each proxy is managed as a single source code module that is self contained with the actual Apigee Edge proxy, config files for Edge Management API calls (e.g. KVMs, target servers), Open API Specification (OAS) and tests (status, unit, integration).
+
 The key components enabling continuous integration are:
 * Jenkins - build engine
 * Maven - builder
@@ -27,21 +45,38 @@ Jenkins projects are set up to run using Maven and Maven runs via configurations
 * git push origin prod
 * git checkout master
 
+#### Initial Deploy
+Set your $HOME/.m2/settings.xml  
+Example:
+```
+<?xml version="1.0"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <profile>
+            <id>test</id>
+            <!-- These are also the values for environment variables used by set-edge-env-values.sh for Jenkins -->
+            <properties>
+                <EdgeOrg>yourorgname</EdgeOrg>
+                <EdgeEnv>yourenv</EdgeEnv>
+                <EdgeUsername>yourusername@exco.com</EdgeUsername>
+                <EdgePassword>yourpassword</EdgePassword>
+                <EdgeNorthboundDomain>yourourgname-yourenv.apigee.net</EdgeNorthboundDomain>
+                <EdgeAuthtype>oauth</EdgeAuthtype>
+            </properties>
+        </profile>
+        ...
+    </profiles>
+</settings>
+```
+##### Initial build and deploy to pingstatus-v1
+```
+mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+```
 ### Feature
 * git checkout -b feature/jira1 --- (MAKE changes for feature/jira1)
-
-#### Test locally
-Set your ~/.m2/settings.xml
-##### Initial build and deploy to currencty-"yourusername"v1
-* mvn -X install -Ptest -Dcommit=local -Dbranch=feature/jira1 
-##### Run unit tests and integration tests
-* mvn process-resources exec:exec@unit -Ptest
-* mvn process-resources exec:exec@integration -Ptest
-##### To run integration tests in other environments
-* mvn process-resources exec:exec@integration -Ptest -Ddeployment.suffix=
-* mvn process-resources exec:exec@integration -Pprod -Ddeployment.suffix=
-
-Once you're happy with the "new" tests locally and verify the feature "doesn't work" in test and prod, then move on to building via Jenkins.
 
 #### Test via Jenkins
 * git commit -am  "Added changes for feature1"
@@ -76,13 +111,19 @@ Or using this:
 
 ## Maven
 ### Jenkins Commands
-The Jenkins build server runs Maven with this command for each of the feature branches. 
+The Jenkins build server runs Maven with this commands.
+
+Set Environment variables via script
+```
+./set-edge-env-values.sh > edge.properties
+```
+This allows a single build project to be used for each of the branches including feature branches.
 
 ```
-mvn -Pmy-test clean install -Dapi.testtag=@intg,@health
+install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} -Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
 ```
 
-Note the lack of `-deployment.suffix=`. That is so the build and deploy to Apigee creates a separate proxy with a separate basepath to allow independent feature development. Your proxy will show up with a name (e.g. pingstatus-${user.name}v1) and basepath (e.g. /pingstatus/${user.name}v1).
+Note the use of `-deployment.suffix=`. That is so the build and deploy to Apigee creates a separate proxy with a separate basepath to allow independent feature development. Your proxy will show up with a name (e.g. pingstatus-${user.name}v1) and basepath (e.g. /pingstatus/${user.name}v1).
 
 For other environments (e.g. test, prod) the `-deployment.suffix=` is set blank, so the build puts the proxy into the final form with the final basepath (e.g. pingstatus-v1, /pingstatus/v1).
 ```
@@ -108,10 +149,10 @@ In each source directory there is a `package.json` file that holds the required 
 
 
 ## Running Tests Locally
-Often it is necessary to interate over tests for a feature development. Since Apickli/Cucumber tests are mostly text based, its easy to do this locally. 
+Often it is necessary to interate over tests for a feature development. Since Apickli/Cucumber tests are mostly text based, its easy to do this locally.
 Here are the steps:
 1 Install your feature proxy to Apigee if you are creating a new feature, otherwise just get a copy of the exising proxy you are building tests for.
-2 Run Maven to copy resources and "replace" things. 
+2 Run Maven to copy resources and "replace" things.
     * `mvn -P test clean process-resources`
 3 Run tests by tag or by feature file
     * cucumberjs target/test/apickli/features --tags @intg
@@ -184,7 +225,8 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 * diff -q --suppress-common-lines -r --side-by-side apiproxy-prev apiproxy -W 240
 * diff --suppress-common-lines -r --side-by-side apiproxy-prev apiproxy -W 240
 
-### Maven $HOME/.m2/settings.xml 
+## Specific Usage
+### Maven $HOME/.m2/settings.xml
 ```
 <profile>
     <id>test</id>
@@ -209,42 +251,44 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
         <EdgeAuthtype>oauth</EdgeAuthtype>
     </properties>
 </profile>
-        
+
 ```
 
-### Frequently used commands
-* mvn jshint:lint
-* mvn -Ptest exec:exec@unit
-* mvn -Ptest install -Ddeployment.suffix=
-* mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
-* mvn -Ptest process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
-* mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=sync -Dapi.testtag=@get-ping
-* mvn -Ptest clean process-resources jmeter:jmeter jmeter-analysis:analyze -Ddeployment.suffix=
-* mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-status
-* mvn -Ptest apigee-config:developers apigee-config:apiproducts apigee-config:developerapps -Dapigee.config.options=update
-* mvn -Ptest apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
-* mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipPerformanceTests=true
-* mvn -Ptest clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-ping
-
-* mvn -Ptest apigee-config:targetservers -Dapigee.config.options=update
-* mvn -Ptest apigee-config:developerapps -Dapigee.config.options=update
-* mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
-* mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
-
-Install proxy no integration or jmeter tests
-* mvn -Ptest install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipPerformanceTests=true
-
-Install proxy and update all configs, no integration or jmeter tests
-* mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipPerformanceTests=true
-* mvn -Ptest install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -DskipPerformanceTests=true
-
-Export App keys
-* mvn -Ptraining-test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
-
-## All at once using resources
+## All at once full build and deploy
 Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
 
-* mvn -X -Ptraining-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+* mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-## Just run the tests
-* mvn -Ptraining-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+## Other commands for iterations
+
+### Full install and test, but skip cleaning target
+* mvn -X -P test install -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+### Skip clean and export - just install, deploy and test
+* mvn -P test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+### Just update Developers, Products and Apps
+* mvn -P test process-resources apigee-config:developers apigee-config:apiproducts apigee-config:apps apigee-config:exportAppKeys -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
+
+### Just update KVM
+* mvn -P hybrid-test process-resources apigee-config:kvms -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+
+### Just update Target Servers
+* mvn -P hybrid-test process-resources apigee-config:targetservers -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+
+### Export App keys
+* mvn -P hybrid-test apigee-config:exportAppKeys -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
+
+### Export Apps and run the tests (after skip.clen)
+* mvn -P test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+
+### Just run the tests (after skip.clen) - for test iterations
+* mvn -P test process-resources -Ddeployment.suffix= -Dskip.clean=true exec:exec@integration -Dapi.testtag=@health
+
+### Skip Creating Apps and Overwrite latest revision
+* mvn -P test install -Ddeployment.suffix= -Dapigee.options=update -Dapigee.config.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+### Infrequently used commands
+* mvn jshint:lint
+* mvn -Ptest exec:exec@unit
+

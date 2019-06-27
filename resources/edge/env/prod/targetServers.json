@@ -1,7 +1,7 @@
 [
     {
         "name": "pingstatus-v1",
-        "host": "kurtkanaskietrainer-trial-test.apigee.net",
+        "host": "API_NORTHBOUND_DOMAIN",
         "isEnabled": true,
         "port": 443,
         "sSLInfo": {

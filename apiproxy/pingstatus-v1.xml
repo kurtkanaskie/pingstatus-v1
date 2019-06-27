@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy revision="3" name="pingstatus-v1">
+<APIProxy revision="84" name="pingstatus-v1">
     <Basepaths>/pingstatus/v1</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
-    <CreatedAt>1498501085399</CreatedAt>
-    <CreatedBy>kurtkanaskie@google.com</CreatedBy>
-    <Description>@description</Description>
+    <CreatedAt>1528927796437</CreatedAt>
+    <CreatedBy>kurtkanaskie+jenkins@google.com</CreatedBy>
+    <Description>Added apiproxy.revision to responses. @description</Description>
     <DisplayName>pingstatus-v1</DisplayName>
-    <LastModifiedAt>1498501085399</LastModifiedAt>
+    <LastModifiedAt>1559230268186</LastModifiedAt>
     <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
     <Policies>
+        <Policy>AM-create-ping-response</Policy>
         <Policy>AM-create-status-response</Policy>
         <Policy>AM-debug</Policy>
-        <Policy>AM-default-proxy-fault</Policy>
-        <Policy>AM-missing-or-invalid-clientId</Policy>
-        <Policy>AM-resource-not-found</Policy>
+        <Policy>AM-set-get-status-pathsuffix</Policy>
+        <Policy>AM-set-proxy-default-error-vars</Policy>
         <Policy>AM-set-service-unavailable-error-variables</Policy>
+        <Policy>AM-set-standard-error-response</Policy>
+        <Policy>AM-target-headers</Policy>
+        <Policy>JS-proxy-fault-rules</Policy>
         <Policy>JS-set-time-data</Policy>
-        <Policy>KV-Get-Config-Values</Policy>
-        <Policy>RF-create-ping-response</Policy>
+        <Policy>KV-config-values</Policy>
         <Policy>RF-path-suffix-not-found</Policy>
         <Policy>VA-header</Policy>
     </Policies>
@@ -25,6 +27,8 @@
         <ProxyEndpoint>default</ProxyEndpoint>
     </ProxyEndpoints>
     <Resources>
+        <Resource>openapi://association.json</Resource>
+        <Resource>jsc://JS-proxy-fault-rules.js</Resource>
         <Resource>jsc://JS-set-time-data.js</Resource>
     </Resources>
     <Spec></Spec>
