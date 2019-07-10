@@ -34,9 +34,21 @@ else
 fi
 export EdgeOrg="kurtkanaskietrainer-trial"
 export EdgeNorthboundDomain=$EdgeOrg-$EdgeEnv.apigee.net
+
+ConfigChanges = `git status -s | grep "M edge.jsons"`
+if [[ $? -eq 0 ]]
+then
+	export EdgeConfigOptions="update"
+else
+	export EdgeConfigOptions="none"
+fi
+
 # Expect to redirect output from this script to an "edge.properties" file.
 echo EdgeOrg=$EdgeOrg
 echo EdgeEnv=$EdgeEnv
 echo EdgeNorthboundDomain=$EdgeNorthboundDomain
 echo EdgeProfile=$EdgeProfile 
 echo EdgeDeploySuffix=$EdgeDeploySuffix 
+echo EdgeConfigOptions=$EdgeConfigOptions
+
+
