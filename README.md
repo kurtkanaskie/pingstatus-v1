@@ -254,7 +254,7 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 
 ```
 
-## All at once full build and deploy
+## All at once - full build and deploy
 Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
 
 * mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
