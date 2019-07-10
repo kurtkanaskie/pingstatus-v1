@@ -35,7 +35,6 @@ fi
 export EdgeOrg="kurtkanaskietrainer-trial"
 export EdgeNorthboundDomain=$EdgeOrg-$EdgeEnv.apigee.net
 
-# ConfigChanges = `git status -s | grep "M edge.jsons"`
 ConfigChanges=`git diff --name-only HEAD HEAD~1 | grep "edge.json"`
 if [[ $? -eq 0 ]]
 then
