@@ -51,7 +51,7 @@ fi
 export EdgeProxy="pingstatus-${EdgeDeploySuffix}v1"
 
 # Get currently deployed revision in case build fields, so we can redeploy
-EdgeProxyRev=`curl -s -u $EdgeInstallUsername:$EdgeInstallPassword https://api.enterprise.apigee.com/v1/o/$EdgeOrg/e/$EdgeEnv/apis/$EdgeProxy/deployments | grep '^    "name"' | cut -d '"' -f 4`
+EdgePreRev=`curl -s -u $EdgeInstallUsername:$EdgeInstallPassword https://api.enterprise.apigee.com/v1/o/$EdgeOrg/e/$EdgeEnv/apis/$EdgeProxy/deployments | grep '^    "name"' | cut -d '"' -f 4`
 export EdgePreRev=$EdgePreRev
 
 # Expect to redirect output from this script to an "edge.properties" file.
