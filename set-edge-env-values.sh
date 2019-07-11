@@ -44,6 +44,9 @@ else
 	export EdgeConfigOptions="none"
 fi
 
+# Get currently deployed revision in case build fields, so we can redeploy
+echo DEBUG ================================================================== EdgeInstallUsername=$EdgeInstallUsername
+
 # Expect to redirect output from this script to an "edge.properties" file.
 echo EdgeOrg=$EdgeOrg
 echo EdgeEnv=$EdgeEnv
