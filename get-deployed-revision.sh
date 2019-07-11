@@ -5,6 +5,7 @@
 
 # This script is hard coded with org and proxy name
 export EdgeOrg="kurtkanaskietrainer-trial"
+# export EdgeOrg="amer-demo13"
 
 # This script is hard coded with proxy name and EdgeDeploySuffix as per pom.xml
 export EdgeProxy="pingstatus-${EdgeDeploySuffix}v1"
