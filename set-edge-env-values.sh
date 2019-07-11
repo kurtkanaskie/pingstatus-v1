@@ -8,6 +8,9 @@
 
 # echo BRANCH: $GIT_BRANCH
 
+# This script is hard coded with org and proxy name
+export EdgeOrg="kurtkanaskietrainer-trial"
+
 EdgeProfile="" 
 EdgeDeploySuffix="" 
 
@@ -32,7 +35,7 @@ else
 	echo BRANCH PATH NOT FOUND
 	exit 1
 fi
-export EdgeOrg="kurtkanaskietrainer-trial"
+
 export EdgeNorthboundDomain=$EdgeOrg-$EdgeEnv.apigee.net
 
 # ConfigChanges=`git diff --name-only HEAD HEAD~1 | grep "edge.json"`
@@ -44,8 +47,12 @@ else
 	export EdgeConfigOptions="none"
 fi
 
+# This script is hard coded with proxy name and EdgeDeploySuffix as per pom.xml
+export EdgeProxy="pingstatus-${EdgeDeploySuffix}v1"
+
 # Get currently deployed revision in case build fields, so we can redeploy
-echo DEBUG ================================================================== EdgeInstallUsername=$EdgeInstallUsername
+EdgeProxyRev=`curl -s -u $EdgeInstallUsername:$EdgeInstallPassword https://api.enterprise.apigee.com/v1/o/$EdgeOrg/e/$EdgeEnv/apis/$EdgeProxy/deployments | grep '^    "name"' | cut -d '"' -f 4`
+export EdgeProxyRev=$EdgeProxyRev
 
 # Expect to redirect output from this script to an "edge.properties" file.
 echo EdgeOrg=$EdgeOrg
@@ -54,5 +61,8 @@ echo EdgeNorthboundDomain=$EdgeNorthboundDomain
 echo EdgeProfile=$EdgeProfile 
 echo EdgeDeploySuffix=$EdgeDeploySuffix 
 echo EdgeConfigOptions=$EdgeConfigOptions
+
+echo EdgeProxy=$EdgeProxy
+echo EdgeProxyRev=$EdgeProxyRev
 
 
