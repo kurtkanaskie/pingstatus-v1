@@ -8,7 +8,7 @@ Feature: API proxy health
     Scenario: Verify the API proxy is responding
         Given I set X-APIKey header to `clientId`
 		When I GET /ping
-        Then response code should be 201
+        Then response code should be 200
         And response header Content-Type should be application/json
         # And response body path $.environment should be dev
         And response body path $.apiproxy should be `apiproxy`
