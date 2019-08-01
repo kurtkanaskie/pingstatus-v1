@@ -9,7 +9,7 @@
     </AssignVariable>
     <AssignVariable>
         <Name>flow.target.pathsuffix</Name>
-        <Value>status</Value>
+        <Value>healthcheck</Value>
         <Ref/>
     </AssignVariable>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>

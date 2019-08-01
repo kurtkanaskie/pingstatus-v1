@@ -5,7 +5,7 @@
         "entry": [
             {
                 "name": "target.basepath",
-                "value": "pingstatus-mock/v1"
+                "value": "echo"
             }
         ]
     }

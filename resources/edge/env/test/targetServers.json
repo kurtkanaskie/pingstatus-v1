@@ -1,7 +1,7 @@
 [
     {
         "name": "pingstatus-v1",
-        "host": "API_NORTHBOUND_DOMAIN",
+        "host": "mocktarget.apigee.net",
         "isEnabled": true,
         "port": 443,
         "sSLInfo": {

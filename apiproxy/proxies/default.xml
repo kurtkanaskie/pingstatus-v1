@@ -75,7 +75,6 @@
     </Flows>
     <HTTPProxyConnection>
         <BasePath>/pingstatus/v1</BasePath>
-        <VirtualHost>default</VirtualHost>
         <VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="ping">
