@@ -8,6 +8,10 @@
 
 # echo BRANCH: $GIT_BRANCH
 
+# This script is hard coded for EdgeOrg and EdgeProxy
+# This script is hard coded with proxy name and EdgeDeploySuffix as per pom.xml (see below)
+export EdgeOrg="kurtkanaskietrainer-trial"
+
 EdgeProfile="" 
 EdgeDeploySuffix="" 
 
@@ -32,11 +36,25 @@ else
 	echo BRANCH PATH NOT FOUND
 	exit 1
 fi
-export EdgeOrg="kurtkanaskietrainer-trial"
+
 export EdgeNorthboundDomain=$EdgeOrg-$EdgeEnv.apigee.net
+
+# ConfigChanges=`git diff --name-only HEAD HEAD~1 | grep "edge.json"`
+ConfigChanges=`git diff --name-only HEAD HEAD~1 | grep "resources"`
+if [[ $? -eq 0 ]]
+then
+	export EdgeConfigOptions="update"
+else
+	export EdgeConfigOptions="none"
+fi
+
+export EdgeProxy="pingstatus-${EdgeDeploySuffix}v1"
+
 # Expect to redirect output from this script to an "edge.properties" file.
 echo EdgeOrg=$EdgeOrg
 echo EdgeEnv=$EdgeEnv
 echo EdgeNorthboundDomain=$EdgeNorthboundDomain
 echo EdgeProfile=$EdgeProfile 
 echo EdgeDeploySuffix=$EdgeDeploySuffix 
+echo EdgeConfigOptions=$EdgeConfigOptions
+echo EdgeProxy=$EdgeProxy

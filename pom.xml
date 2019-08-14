@@ -125,6 +125,38 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>demo29-test</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<properties>
+				<apigee.profile>demo29-test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>demo29-prod</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<properties>
+				<apigee.profile>demo29-prod</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
@@ -197,62 +229,6 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>amer-poc15-test</id>
-			<properties>
-				<apigee.profile>amer-poc15-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>amer-poc15</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>amer-poc15-test.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>amer-poc15-prod</id>
-			<properties>
-				<apigee.profile>amer-poc15-test</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>amer-poc15</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>amer-poc15-prod.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>demo33-test</id>
-			<properties>
-				<apigee.profile>demo33</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>demo33</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>demo33-test.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>gcpconnect-test</id>
-			<properties>
-				<apigee.profile>gcpconnect-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>gcpconnect</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>gcpconnect-test.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
 			<id>2016-test</id>
 			<properties>
 				<apigee.profile>2016-test</apigee.profile>
@@ -280,20 +256,6 @@
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
-		<profile>
-			<id>demo15-test</id>
-			<properties>
-				<apigee.profile>demo15-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>	
 	</profiles>
 
 	<build>
@@ -365,27 +327,8 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- rename an env org
-			<plugin>
-				<groupId>com.coderplus.maven.plugins</groupId>
-				<artifactId>copy-rename-maven-plugin</artifactId>
-				<version>1.0</version>
-				<executions>
-					<execution>
-						<id>copy-and-rename-file</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>rename</goal>
-						</goals>
-						<configuration>
-							<sourceFile>${project.build.directory}/file-to-rename.txt</sourceFile>
-							<destinationFile>${project.build.directory}/renamed-file.txt</destinationFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			-->
 
+			<!-- Do replacements -->
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
 				<artifactId>replacer</artifactId>
@@ -435,6 +378,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- apigee deploy -->
 			<plugin>
 				<groupId>io.apigee.build-tools.enterprise4g</groupId>
 				<artifactId>apigee-edge-maven-plugin</artifactId>
@@ -458,7 +402,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Configuration -->
+			<!-- apigee Configuration -->
             <plugin>
                 <groupId>com.apigee.edge.config</groupId>
                 <artifactId>apigee-config-maven-plugin</artifactId>
@@ -522,6 +466,7 @@
                 </executions>
             </plugin>   
 
+            <!-- exec npm install, apigeelint, unit tests, integration tests -->
             <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -542,7 +487,6 @@
 						</configuration>
 					</execution>
 					<!-- run apigeelint -->
-					<!-- its got issues on Jenkins -->
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>

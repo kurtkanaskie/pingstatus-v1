@@ -8,6 +8,10 @@
         "approvalType": "auto",
         "attributes": [
             {
+                "name" : "access",
+                "value" : "internal"
+            },
+            {
                 "name": "custom.description",
                 "value": "Product to test pingstatus API for APIGEE_ENVIRONMENT env"
             }

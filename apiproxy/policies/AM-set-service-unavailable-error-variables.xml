@@ -3,7 +3,7 @@
     <DisplayName>AM-set-service-unavailable-error-variables</DisplayName>
     <Properties/>
     <Set>
-        <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+        <Payload contentType="application/json">
 {
     "fault": {
         "faultstring": "Simulated The Service is temporarily unavailable",
@@ -12,7 +12,7 @@
         }
     }
 }
-        </Payload>
+</Payload>
     </Set>
     <AssignVariable>
         <Name>flow.error.code</Name>

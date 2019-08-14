@@ -10,7 +10,10 @@
     "code": "{flow.error.code}",
     "message": "{flow.error.description}",
     "info": "https://developer.company.com/errors#{flow.error.code}",
-    "details": "faultstring: {error.message}"
+    "details": {
+        "fault_name":"{fault.name}",
+        "error_message":"{error.message}"
+    }
 }
 </Payload>
         <StatusCode>{flow.error.status}</StatusCode>
