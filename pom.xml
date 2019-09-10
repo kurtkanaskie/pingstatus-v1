@@ -69,7 +69,7 @@
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
-				<apigee.options>validate</apigee.options>
+				<apigee.options>validate,update</apigee.options>
 			</properties>
 		</profile>
 		<profile>
