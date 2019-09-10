@@ -1,15 +1,18 @@
 #! /bin/bash
 
-# If GIT_BRANCH is master or feature set EdgeEnv to "test"
-# If GIT_BRANCH is feature set EdgeDeploySuffix to featurename
+# This script is hard coded for EdgeOrg and EdgeProxy
+# This script is hard coded with proxy name and EdgeDeploySuffix as per pom.xml (see below)
+# Expects envs of "test" and "prod"
+
+# If GIT_BRANCH is master or feature, set EdgeEnv to "test"
+# Else If GIT_BRANCH is feature, set EdgeDeploySuffix to featurename
+# Else If GIT_BRANCH is prod, set EdgeEnv to "prod"
 # /origin/master
 # /origin/feature/jira1
 # /origin/prod
 
 # echo BRANCH: $GIT_BRANCH
 
-# This script is hard coded for EdgeOrg and EdgeProxy
-# This script is hard coded with proxy name and EdgeDeploySuffix as per pom.xml (see below)
 export EdgeOrg="kurtkanaskietrainer-trial"
 
 EdgeProfile="" 
