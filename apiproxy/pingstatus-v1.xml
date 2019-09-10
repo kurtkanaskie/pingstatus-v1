@@ -6,7 +6,6 @@
     <CreatedBy>kurtkanaskie+jenkins@google.com</CreatedBy>
     <Description>Added apiproxy.revision to responses. @description</Description>
     <DisplayName>pingstatus-v1</DisplayName>
-    <LastModifiedAt>1559230268186</LastModifiedAt>
     <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
     <Policies>
         <Policy>AM-create-ping-response</Policy>
