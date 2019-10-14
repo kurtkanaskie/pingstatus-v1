@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
-  args: ['-c', 'mvn -X -P test install -Dusername=kurtkanaskie+cicd@googl.com -Dpassword=$$PASSWORD -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
+  args: ['-c', 'mvn -X -P test install -Dusername=kurtkanaskie+cicd@google.com -Dpassword=$$PASSWORD -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
   dir: 'pingstatus-v1'
   secretEnv: ['PASSWORD']
 
