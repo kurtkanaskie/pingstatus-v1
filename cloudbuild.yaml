@@ -1,4 +1,14 @@
 steps:
+- name: 'debug'
+  entrypoint: 'bash'
+  args: ['-c', 'pwd']
+  dir: '.'
+
+- name: 'debug'
+  entrypoint: 'bash'
+  args: ['-c', 'ls -l']
+  dir: '.'
+
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
   args: ['-c', 'mvn -X -Ptest install -Dapigee.username=kurtkanaskie+cicd@google.com -Dapigee.password=$$PASSWORD -Dapigee.org=amer-demo13 -Dapigee.env=test -Dapi.northbound.domain=amer-demo13-test.apigee.net -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
