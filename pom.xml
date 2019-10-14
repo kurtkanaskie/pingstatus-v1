@@ -473,6 +473,7 @@
 				<version>1.3.2</version>
 				<executions>
 					<!-- npm install -->
+				<!-- Why cant I run this?
 					<execution>
 						<id>npm-install</id>
 						<phase>validate</phase>
@@ -486,6 +487,7 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
+				-->
 					<!-- run apigeelint -->
 					<execution>
 						<id>apigeelint</id>
