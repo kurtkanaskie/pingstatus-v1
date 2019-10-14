@@ -1,13 +1,9 @@
 steps:
-- name: 'debug'
-  entrypoint: 'bash'
-  args: ['-c', 'pwd']
-  dir: '.'
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['pwd']
 
-- name: 'debug'
-  entrypoint: 'bash'
-  args: ['-c', 'ls -l']
-  dir: '.'
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['ls', '-l']
 
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
