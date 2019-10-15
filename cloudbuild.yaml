@@ -12,10 +12,6 @@ steps:
 
 - name: 'gcr.io/cloud-builders/gsutil'
   entrypoint: 'bash'
-  args: ['-c', 'which node']
-
-- name: 'gcr.io/cloud-builders/gsutil'
-  entrypoint: 'bash'
   args: ['-c', 'node -v']
 
 - name: 'gcr.io/cloud-builders/gsutil'
