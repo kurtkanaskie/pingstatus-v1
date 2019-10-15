@@ -3,12 +3,24 @@ steps:
   entrypoint: 'bash'
   args: ['-c', 'pwd']
 
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+
 - name: 'gcr.io/cloud-builders/gsutil'
   entrypoint: 'bash'
   args: ['-c', 'ls -l']
 
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['install']
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
+  args: ['-c', 'which node']
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
+  args: ['-c', 'node -v']
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
+  args: ['-c', '/usr/local/bin/node -v']
 
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
