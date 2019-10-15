@@ -1,0 +1,24 @@
+steps: 
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'echo KURT: $BRANCH_NAME --- mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
+
+- name: 'gcr.io/cloud-builders/mvn'
+  entrypoint: 'bash'
+  args: ['-c', 'mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
+  dir: '.'
+  secretEnv: ['USERNAME','PASSWORD']
+
+substitutions:
+  _ORG: amer-demo13
+  _ENV: test
+  _PROFILE: test
+  _NORTHBOUNDDOMAIN: amer-demo13-test.apigee.net
+options:
+  substitution_option: 'ALLOW_LOOSE'
+
+secrets:
+- kmsKeyName: projects/apigee-pingstatus-v1/locations/global/keyRings/apigee-cicd/cryptoKeys/password
+  secretEnv:
+    USERNAME: CiQAOhJCgocPkbdATs7tKSLiASDRoL8O38jVxB34cOYcXhn/vmYSRQCyibiLTRACzhOkiGRAhcB7iIjDlEfzK/FDSqFZoCSpd5n5Y1gqAOBnqkuL0Qb+50tcSnqBut1xoF7uC87Axbx+Ee5fLg==
+    PASSWORD: CiQAOhJCgofcECYHrygj9vtyNOKP5ZGWQGDllPfFy54MQCPJX04SMgCyibiL6bVFcUlfjYtLfiQZFig16UUOcU94Io0f0gMyczDg4hCvpWy4soKE8IqsRtgq

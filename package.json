@@ -1,6 +1,16 @@
 {
   "name": "pingstatus",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:kurtkanaskie/pingstatus-v1.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "apigeelint": "node ./node_modules/apigeelint/cli.js -s ./apiproxy -f table",
+    "unit": "node ./node_modules/mocha/bin/mocha test/unit",
+    "integration": "node ./node_modules/cucumber/bin/cucumber.js target/test/integration/features"
+  },
   "devDependencies": {
     "apickli": "^1.7.0",
     "apigeelint": "0.2.8",
@@ -25,5 +35,8 @@
     "noempty": true,
     "nonew": true,
     "unused": true
+  },
+  "dependencies": {
+    "tmp": "^0.1.0"
   }
 }

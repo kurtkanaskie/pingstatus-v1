@@ -2,12 +2,8 @@
 <APIProxy revision="84" name="pingstatus-v1">
     <Basepaths>/pingstatus/v1</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
-    <CreatedAt>1528927796437</CreatedAt>
-    <CreatedBy>kurtkanaskie+jenkins@google.com</CreatedBy>
     <Description>Added apiproxy.revision to responses. @description</Description>
     <DisplayName>pingstatus-v1</DisplayName>
-    <LastModifiedAt>1559230268186</LastModifiedAt>
-    <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
     <Policies>
         <Policy>AM-create-ping-response</Policy>
         <Policy>AM-create-status-response</Policy>
