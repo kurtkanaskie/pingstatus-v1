@@ -22,8 +22,9 @@ This code is open source.
 Each proxy is managed as a single source code module that is self contained with the actual Apigee Edge proxy, config files for Edge Management API calls (e.g. KVMs, target servers), Open API Specification (OAS) and tests (status, unit, integration).
 
 The key components enabling continuous integration are:
-* Jenkins - build engine
+* Jenkins or GCP Cloud Build - build engine
 * Maven - builder
+* npm, node - to run unit and integration tests
 * Apickli - cucumber extension for RESTful API testing
 * Cucumber - Behavior Driven Development
 * JMeter - Performance testing
@@ -72,7 +73,7 @@ Example:
 ```
 ##### Initial build and deploy to pingstatus-v1
 ```
-mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 ```
 ### Feature
 * git checkout -b feature/jira1 --- (MAKE changes for feature/jira1)
@@ -256,7 +257,11 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 ## All at once - full build and deploy
 Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
 
-* mvn -X -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+### Maven all at once
+* mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+### Cloud Build all at once
+* cloud-build-local --dryrun=false .
 
 ## Other commands for iterations
 
@@ -278,17 +283,19 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ### Export App keys
 * mvn -P hybrid-test apigee-config:exportAppKeys -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
 
-### Export Apps and run the tests (after skip.clen)
+### Export Apps and run the tests (after skip.clean)
 * mvn -P test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
 
-### Just run the tests (after skip.clen) - for test iterations
+### Just run the tests (after skip.clean) - for test iterations
 * mvn -P test process-resources -Ddeployment.suffix= -Dskip.clean=true exec:exec@integration -Dapi.testtag=@health
 
 ### Skip Creating Apps and Overwrite latest revision
 * mvn -P test install -Ddeployment.suffix= -Dapigee.options=update -Dapigee.config.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Infrequently used commands
+* mvn -Ptest validate (runs all validate phases: lint, apigeelint, unit)
 * mvn jshint:lint
-* mvn -Ptest exec:exec@unit
-* mvn -Ptest exec:exec@apigeelint
+* mvn -Ptest frontend:npm@unit
+* mvn -Ptest frontend:npm@apigeelint
+
 
