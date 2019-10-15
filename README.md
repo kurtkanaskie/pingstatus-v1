@@ -13,7 +13,7 @@ This example is not an official Google product, nor is it part of an official Go
 
 ## License
 
-This material is copyright 2019, Google LLC.and is licensed under the Apache 2.0 license.
+This material is copyright 2019, Google LLC. and is licensed under the Apache 2.0 license.
 See the [LICENSE](LICENSE) file.
 
 This code is open source.
