@@ -1,9 +1,21 @@
-steps:
+steps: 
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args: ['-c', 'echo KURT: $BRANCH_NAME --- mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
+
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
-  args: ['-c', 'mvn -Ptest install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=amer-demo13 -Dapigee.env=test -Dapi.northbound.domain=amer-demo13-test.apigee.net -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
+  args: ['-c', 'mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health']
   dir: '.'
   secretEnv: ['USERNAME','PASSWORD']
+
+substitutions:
+  _ORG: amer-demo13
+  _ENV: test
+  _PROFILE: test
+  _NORTHBOUNDDOMAIN: amer-demo13-test.apigee.net
+options:
+  substitution_option: 'ALLOW_LOOSE'
 
 secrets:
 - kmsKeyName: projects/apigee-pingstatus-v1/locations/global/keyRings/apigee-cicd/cryptoKeys/password
