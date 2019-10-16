@@ -30,8 +30,8 @@
 		<project.root.dir>${basedir}</project.root.dir>
 		<target.root.dir>${basedir}/target</target.root.dir>
 		<deployment.suffix>${user.name}</deployment.suffix>
-		<commit></commit>
-		<branch>a local</branch>
+		<commit>none</commit>
+		<branch>local</branch>
 	</properties>
 
 	<!-- This is where you add environment specific properties under various profile names 
@@ -367,7 +367,7 @@
 							<value>${api.northbound.domain}</value>
 						</replacement>
 						<replacement>
-							<token>@description</token>
+							<token>@DESCRIPTION</token>
 							<value>commit ${commit} from ${branch} branch by ${apigee.username}</value>
 						</replacement>
 						<replacement>
