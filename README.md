@@ -107,7 +107,11 @@ Or using this:
 * git pull
 
 ### Merge to Environments qa, stage, sandbox, prod
-
+* git checkout prod
+* git pull
+* git merge --no-ff master
+* git push
+* git checkout master
 
 ## Maven
 ### Jenkins Commands
