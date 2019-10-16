@@ -265,6 +265,7 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Cloud Build all at once
+* cloud-build-local --dryrun=true --substitutions=BRANCH_NAME=master,COMMIT_SHA=kurt-local .
 * cloud-build-local --dryrun=false .
 
 ## Other commands for iterations

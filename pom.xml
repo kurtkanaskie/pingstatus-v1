@@ -368,7 +368,7 @@
 						</replacement>
 						<replacement>
 							<token>@description</token>
-							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
+							<value>commit ${commit} from ${branch} branch by ${apigee.username}</value>
 						</replacement>
 						<replacement>
 							<token>APIGEE_ENVIRONMENT</token>
