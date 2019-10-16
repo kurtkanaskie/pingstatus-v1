@@ -23,7 +23,7 @@ then
 	export EdgeProfile="test"
 	export EdgeEnv="test"
 
-elif [[ "$GIT_BRANCH" = origin/feature/* ]]
+elif [[ "$GIT_BRANCH" == origin/feature/* ]]
 then
 	export EdgeProfile="test"
 	export EdgeEnv="test"

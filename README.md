@@ -107,7 +107,11 @@ Or using this:
 * git pull
 
 ### Merge to Environments qa, stage, sandbox, prod
-
+* git checkout prod
+* git pull
+* git merge --no-ff master
+* git push
+* git checkout master
 
 ## Maven
 ### Jenkins Commands
@@ -261,7 +265,8 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Cloud Build all at once
-* cloud-build-local --dryrun=false .
+* cloud-build-local --dryrun=true --substitutions=BRANCH_NAME=local,COMMIT_SHA=none .
+* cloud-build-local --dryrun=false --substitutions=BRANCH_NAME=local,COMMIT_SHA=none .
 
 ## Other commands for iterations
 
