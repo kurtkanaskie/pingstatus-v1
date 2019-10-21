@@ -1,4 +1,4 @@
-# Ping and Status API Update
+# Ping and Status API Update 
 
 This proxy demonstrates a simple design to demonstrate a full CI/CD lifecycle.
 It uses the following health check or monitoring endpoints
