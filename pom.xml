@@ -42,12 +42,14 @@
 			<id>hybrid-test</id>
 			<properties>
 				<apigee.profile>hybrid-test</apigee.profile>
-				<apigee.env>${EdgeEnv}</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
 				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
+				<apigee.authtype>oauth</apigee.authtype>
+				<apigee.bearer>${EdgeBearer}</apigee.bearer>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
 				<apigee.options>validate</apigee.options>
@@ -67,9 +69,11 @@
 				<apigee.org>${EdgeOrg}</apigee.org>
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
+				<apigee.authtype>oauth</apigee.authtype>
+				<apigee.bearer>${EdgeBearer}</apigee.bearer>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
-				<apigee.options>validate,update</apigee.options>
+				<apigee.options>validate</apigee.options>
 			</properties>
 		</profile>
 		<profile>
