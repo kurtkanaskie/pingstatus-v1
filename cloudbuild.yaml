@@ -1,8 +1,4 @@
 steps: 
-- name: 'gcr.io/cloud-builders/docker'
-  entrypoint: 'bash'
-  args: ['-c', 'echo BUILD_COMMAND: mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix=$_DEPLOYSUFFIX -Dapigee.config.options=$_CONFIGOPTIONS -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dcommit=${COMMIT_SHA} -Dbranch=${BRANCH_NAME}']
-
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
   args: ['-c', 'mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix=$_DEPLOYSUFFIX -Dapigee.config.options=$_CONFIGOPTIONS -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dcommit=${COMMIT_SHA} -Dbranch=${BRANCH_NAME}']
