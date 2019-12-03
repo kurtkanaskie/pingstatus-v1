@@ -28,6 +28,10 @@
             </Step>
             <Step>
                 <Condition>(request.verb != "OPTIONS")</Condition>
+                <Name>AM-remove-x-apikey</Name>
+            </Step>
+            <Step>
+                <Condition>(request.verb != "OPTIONS")</Condition>
                 <Name>KV-config-values</Name>
             </Step>
         </Request>
