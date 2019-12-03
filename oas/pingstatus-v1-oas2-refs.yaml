@@ -1,0 +1,216 @@
+swagger: '2.0'
+info:
+  description: Ping Status OAS 2 using refs
+  version: 1.0.0
+  title: pingstatus-v1 OAS 2 - refs
+  contact:
+    email: kurtkanaskie@google.com
+host: amer-demo13-test.apigee.net
+schemes:
+  - https
+basePath: /pingstatus/v1
+parameters:
+  x-apikey:
+    in: header
+    name: X-APIKey
+    description: API Key also known as client_id.
+    required: true
+    type: string
+    default: 0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk
+paths:
+  /ping:
+    get:
+      operationId: getPing
+      description: Returns a message indicating the API proxy is operational
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/x-apikey'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PingResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      deprecated: false
+  /status:
+    get:
+      operationId: getStatus
+      description: Returns a message indicating the API proxy and back end is operational
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/x-apikey'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/StatusResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      operationId: postStatus
+      description: Returns a message indicating the API proxy and back end is operational
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/x-apikey'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/StatusResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        example: '401.004'
+        description: Error code
+        type: string
+      message:
+        example: Invalid API Key
+        description: Error message
+        type: string
+      info:
+        example: 'https://developer.company.com/errors#401.004'
+        description: Where to find more inforamation
+        type: string
+  PingResponse:
+    type: object
+    properties:
+      organization:
+        example: kurtkanaskietrainer-trial
+        description: The name of the organization
+        type: string
+      environment:
+        example: test
+        description: The name of the environment
+        type: string
+      application:
+        example: pingstatus-v1-app-test
+        description: The name of the application
+        type: string
+      product:
+        example: pingstatus-v1-app-test
+        description: The name of the API product
+        type: string
+      apiproxy:
+        example: pingstatus-v1
+        description: The name of the API Proxy
+        type: string
+      basepath:
+        example: pingstatus-v1
+        description: The basepath of the the URL for the API Proxy
+        type: string
+      pathsuffix:
+        example: pingstatus-v1
+        description: The pathsuffix of the URL for the API Proxy
+        type: string
+      client:
+        example: 216.164.226.250
+        description: The IP address of the client calling the API
+        type: string
+      time:
+        example: 'Tue, 20 Mar 2018 14:33:19 UTC'
+        description: The time when the request was processed
+        type: string
+      latency:
+        example: 42
+        description: The total response time to process the API request
+        type: integer
+      message:
+        example: PONG
+        description: 'Message from the endpoint, gaurenteed to be PONG'
+        type: string
+  StatusResponse:
+    type: object
+    properties:
+      organization:
+        example: kurtkanaskietrainer-trial
+        description: The name of the organization
+        type: string
+      environment:
+        example: test
+        description: The name of the environment
+        type: string
+      application:
+        example: pingstatus-v1-app-test
+        description: The name of the application
+        type: string
+      product:
+        example: pingstatus-v1-app-test
+        description: The name of the API product
+        type: string
+      apiproxy:
+        example: pingstatus-v1
+        description: The name of the API Proxy
+        type: string
+      basepath:
+        example: pingstatus-v1
+        description: The basepath of the the URL for the API Proxy
+        type: string
+      pathsuffix:
+        example: pingstatus-v1
+        description: The pathsuffix of the URL for the API Proxy
+        type: string
+      client:
+        example: 216.164.226.250
+        description: The IP address of the client calling the API
+        type: string
+      time:
+        example: 'Tue, 20 Mar 2018 14:33:19 UTC'
+        description: The time when the request was processed
+        type: string
+      proxyLatency:
+        example: 42
+        description: The total response time to process the API request
+        type: integer
+      targetLatency:
+        example: 378
+        description: The total response time to process the API request
+        type: integer
+      latency:
+        example: 420
+        description: The total response time to process the API request
+        type: integer
+      message:
+        example: STATUS
+        description: 'Message from the endpoint, gaurenteed to be STATUS'
+        type: string
+      backendMessage:
+        type: object
+        description: Message recieved from the back end typically including an non-descript tag and date information
+        properties:
+          uri:
+            example: 'https://kurtkanaskietrainer-trial-test.apigee.net/pingstatusmock/v1/status'
+            description: The URI of the backend system
+            type: string
+          status:
+            example: OK
+            description: The status from backend system
+            type: string
