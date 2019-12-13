@@ -1,7 +1,7 @@
 [
     {
         "name": "pingstatus-v1",
-        "host": "mocktarget.apigee.net",
+        "host": "amer-demo13-test.apigee.net",
         "isEnabled": true,
         "port": 443,
         "sSLInfo": {

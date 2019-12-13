@@ -6,6 +6,14 @@
             {
                 "name": "target.basepath",
                 "value": "echo"
+            },
+            {
+                "name": "logging.log",
+                "value": "true"
+            },
+            {
+                "name": "logging.level",
+                "value": "INFO"
             }
         ]
     }

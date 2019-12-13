@@ -1,4 +1,4 @@
-# Ping and Status API Update
+# Ping and Status API Update - Demo
 
 This proxy demonstrates a simple design to demonstrate a full CI/CD lifecycle.
 It uses the following health check or monitoring endpoints
@@ -135,7 +135,7 @@ mvn -P test clean install  -Ddeployment.suffix= -Dapi.testtag=@intg,@health
 ```
 
 
-NOTE: If you get a strange error from Maven about replacement `named capturing group is missing trailing '}'` there is something wrong with your options or replacements settings.
+NOTE: If you get a strange error from Maven about replacement `named capturing group is missing trailing '}'` there is something wrong with your options or replacements settings. Use '-X' and look for unfulfilled variables (e.g. ${apigee.username}).
 
 In addition to "replacing" that string other Maven phases (e.g. process-resources) do some inline replacement to support the feature proxy.
 The most important change is to the `test/apickli/config/config.json` file which changes the basepath for the proxy so the tests go to the correct feature proxy in Apigee.
@@ -271,7 +271,7 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ## Other commands for iterations
 
 ### Full install and test, but skip cleaning target
-* mvn -X -P test install -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+* mvn -P test install -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Skip clean and export - just install, deploy and test
 * mvn -P test install -Ddeployment.suffix= -Dskip.clean=true -Dskip.export=true -Dapigee.config.options=none -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
@@ -280,19 +280,19 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -P test process-resources apigee-config:developers apigee-config:apiproducts apigee-config:apps apigee-config:exportAppKeys -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
 
 ### Just update KVM
-* mvn -P hybrid-test process-resources apigee-config:kvms -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+* mvn -P test process-resources apigee-config:kvms -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
 
 ### Just update Target Servers
-* mvn -P hybrid-test process-resources apigee-config:targetservers -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+* mvn -P test process-resources apigee-config:targetservers -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
 
 ### Export App keys
-* mvn -P hybrid-test apigee-config:exportAppKeys -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
+* mvn -P test apigee-config:exportAppKeys -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration
 
 ### Export Apps and run the tests (after skip.clean)
-* mvn -P test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+* mvn -P test process-resources apigee-config:exportAppKeys frontend:npm@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
 
 ### Just run the tests (after skip.clean) - for test iterations
-* mvn -P test process-resources -Ddeployment.suffix= -Dskip.clean=true exec:exec@integration -Dapi.testtag=@health
+* mvn -P test process-resources -Ddeployment.suffix= -Dskip.clean=true frontend:npm@integration -Dapi.testtag=@health
 
 ### Skip Creating Apps and Overwrite latest revision
 * mvn -P test install -Ddeployment.suffix= -Dapigee.options=update -Dapigee.config.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
@@ -300,7 +300,8 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ### Infrequently used commands
 * mvn -Ptest validate (runs all validate phases: lint, apigeelint, unit)
 * mvn jshint:lint
-* mvn -Ptest frontend:npm@unit
 * mvn -Ptest frontend:npm@apigeelint
+* mvn -Ptest frontend:npm@unit
+* mvn -Ptest frontend:npm@integration
 
 

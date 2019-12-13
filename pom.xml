@@ -42,12 +42,14 @@
 			<id>hybrid-test</id>
 			<properties>
 				<apigee.profile>hybrid-test</apigee.profile>
-				<apigee.env>${EdgeEnv}</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
 				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
+				<apigee.authtype>oauth</apigee.authtype>
+				<apigee.bearer>${EdgeBearer}</apigee.bearer>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
 				<apigee.options>validate</apigee.options>
@@ -67,9 +69,11 @@
 				<apigee.org>${EdgeOrg}</apigee.org>
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
+				<apigee.authtype>oauth</apigee.authtype>
+				<apigee.bearer>${EdgeBearer}</apigee.bearer>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
-				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
-				<apigee.options>validate,update</apigee.options>
+				<api.testtag>@errorHandling,@health,@cors,@wip</api.testtag>
+				<apigee.options>validate</apigee.options>
 			</properties>
 		</profile>
 		<profile>
@@ -226,34 +230,6 @@
 				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
 				<api.northbound.domain>35.243.181.209:9001</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>2016-test</id>
-			<properties>
-				<apigee.profile>2016-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>kkanaskie2016</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>kkanaskie2016-test.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>2016-prod</id>
-			<properties>
-				<apigee.profile>2016-prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>kkanaskie2016</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>kkanaskie2016-prod.apigee.net</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
 	</profiles>

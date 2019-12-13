@@ -13,6 +13,8 @@
             <Parameter>target.pathsuffix</Parameter>
         </Key>
     </Get>
+    <!-- These override the values used by GetLogValues -->
+    <!--
     <Get assignTo="logging.log" index="1">
         <Key>
             <Parameter>logging.log</Parameter>
@@ -23,5 +25,6 @@
             <Parameter>logging.level</Parameter>
         </Key>
     </Get>
+    -->
     <Scope>environment</Scope>
 </KeyValueMapOperations>

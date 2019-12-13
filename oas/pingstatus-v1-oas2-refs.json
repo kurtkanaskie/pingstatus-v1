@@ -8,7 +8,7 @@
             "email": "kurtkanaskie@google.com"
         }
     },
-    "host": "kurtkanaskietrainer-trial-test.apigee.net",
+    "host": "amer-demo13-test.apigee.net",
     "schemes": [
         "https"
     ],
@@ -20,7 +20,7 @@
           "description": "API Key also known as client_id.",
           "required": true,
           "type": "string",
-          "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg"
+          "default": "0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk"
         }
     },
     "paths": {

@@ -20,7 +20,7 @@
       "description": "API Key also known as client_id.",
       "required": true,
       "type": "string",
-      "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg"
+      "default": "0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk"
     }
   },
   "paths": {
@@ -39,7 +39,7 @@
             "description": "API Key also known as client_id.",
             "required": true,
             "type": "string",
-            "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg"
+            "default": "0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk"
           }
         ],
         "responses": {
@@ -49,7 +49,7 @@
               "type": "object",
               "properties": {
                 "organization": {
-                  "example": "kurtkanaskietrainer-trial",
+                  "example": "amer-demo13",
                   "description": "The name of the organization",
                   "type": "string"
                 },
@@ -171,7 +171,7 @@
             "description": "API Key also known as client_id.",
             "required": true,
             "type": "string",
-            "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg"
+            "default": "0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk"
           }
         ],
         "responses": {
@@ -181,7 +181,7 @@
               "type": "object",
               "properties": {
                 "organization": {
-                  "example": "kurtkanaskietrainer-trial",
+                  "example": "amer-demo13",
                   "description": "The name of the organization",
                   "type": "string"
                 },
@@ -339,7 +339,7 @@
       "type": "object",
       "properties": {
         "organization": {
-          "example": "kurtkanaskietrainer-trial",
+          "example": "amer-demo13",
           "description": "The name of the organization",
           "type": "string"
         },
