@@ -1,4 +1,4 @@
-# Ping and Status API Update - Demo
+# Ping and Status API Update
 
 This proxy demonstrates a simple design to demonstrate a full CI/CD lifecycle.
 It uses the following health check or monitoring endpoints
@@ -262,7 +262,7 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 Replacer copies and replaces the resources dir into the target. Note use of -Dapigee.config.dir option.
 
 ### Maven all at once
-* mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+* mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapigee.smartdocs.config.options=update
 
 ### Cloud Build all at once
 * cloud-build-local --dryrun=true --substitutions=BRANCH_NAME=local,COMMIT_SHA=none .
@@ -295,9 +295,12 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -P test process-resources -Ddeployment.suffix= -Dskip.clean=true frontend:npm@integration -Dapi.testtag=@health
 
 ### Skip Creating Apps and Overwrite latest revision
-* mvn -P test install -Ddeployment.suffix= -Dapigee.options=update -Dapigee.config.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+* mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-### Infrequently used commands
+### Just update the API Specs
+* mvn -P test apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
+
+### Other discrete commands
 * mvn -Ptest validate (runs all validate phases: lint, apigeelint, unit)
 * mvn jshint:lint
 * mvn -Ptest frontend:npm@apigeelint

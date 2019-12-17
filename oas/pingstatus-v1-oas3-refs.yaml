@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
-  description: Ping Status OAS 3 using refs
   version: 1.0.0
-  title: pingstatus-v1 OAS 3 - refs
+  title: pingstatus-v1
+  description: Healthchecks for proxy and target backend.
   contact:
     email: kurtkanaskie@google.com
 servers:
@@ -64,7 +64,7 @@ components:
     x-apikey:
       in: header
       name: X-APIKey
-      description: API Key also known as client_id
+      description: API Key also known as client_id (0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk)
       required: true
       schema:
         type: string
