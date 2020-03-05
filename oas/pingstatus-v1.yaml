@@ -2,7 +2,9 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: pingstatus-v1
-  description: Healthchecks for proxy and target backend.
+  description: |
+    Healthchecks for proxy and target backend. 
+    * API Key for testing: 0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk
   contact:
     email: kurtkanaskie@google.com
 servers:
@@ -12,8 +14,6 @@ paths:
     get:
       operationId: getPing
       description: Returns a message indicating the API proxy is operational
-      parameters:
-        - $ref: "#/components/parameters/x-apikey"
       responses:
         "200":
           description: OK
@@ -38,8 +38,6 @@ paths:
     get:
       operationId: getStatus
       description: Returns a message indicating the API proxy and back end is operational
-      parameters:
-        - $ref: "#/components/parameters/x-apikey"
       responses:
         "200":
           description: OK
@@ -59,16 +57,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+security:
+  - ApiKeyAuth: []
 components:
-  parameters:
-    x-apikey:
+  securitySchemes:
+    ApiKeyAuth:        # arbitrary name for the security scheme
+      type: apiKey
       in: header
       name: X-APIKey
-      description: API Key also known as client_id (0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk)
-      required: true
-      schema:
-        type: string
-        default: 0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk
   schemas:
     ErrorResponse:
       type: object
