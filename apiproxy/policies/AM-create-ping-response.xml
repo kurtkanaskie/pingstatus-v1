@@ -3,9 +3,6 @@
     <DisplayName>AM-create-ping-response</DisplayName>
     <Properties/>
     <Set>
-        <Headers>
-            <Header name="Content-Type">application/json</Header>
-        </Headers>
         <Payload contentType="application/json">
 {
     "organization": "{organization.name}",
