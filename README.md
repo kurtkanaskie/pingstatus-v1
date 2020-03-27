@@ -300,11 +300,17 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ### Just update the API Specs
 * mvn -P test apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
 
+### Just update the Integrated Portal API Specs
+Via process-resources after replacements or when in target
+* mvn -X -P test process-resources apigee-config:specs -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=target/resources/edge
+
+Via the source without replacements
+* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=resources/edge
+
 ### Other discrete commands
 * mvn -Ptest validate (runs all validate phases: lint, apigeelint, unit)
 * mvn jshint:lint
 * mvn -Ptest frontend:npm@apigeelint
 * mvn -Ptest frontend:npm@unit
 * mvn -Ptest frontend:npm@integration
-
-
