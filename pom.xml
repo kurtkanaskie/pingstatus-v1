@@ -274,13 +274,12 @@
 				<executions>
 					<execution>
 						<id>copy-resources</id>
-						<!--<phase>process-resources</phase>-->
+						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
 							<overwrite>true</overwrite>
-							<outputDirectory>${basedir}/target</outputDirectory>
 							<resources>
 								<resource>
 									<!--source -->
