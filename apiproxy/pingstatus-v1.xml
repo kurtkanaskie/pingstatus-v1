@@ -2,7 +2,7 @@
 <APIProxy revision="84" name="pingstatus-v1">
     <Basepaths>/pingstatus/v1</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
-    <Description>@DESCRIPTION</Description>
+    <Description>@DESCRIPTION via GCP Cloud Build or Jenkins</Description>
     <DisplayName>pingstatus-v1</DisplayName>
     <Policies>
         <Policy>AM-create-ping-response</Policy>
