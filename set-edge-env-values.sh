@@ -12,6 +12,10 @@
 # /origin/prod
 
 # echo BRANCH: $GIT_BRANCH
+# Test via:
+# GIT_BRANCH=origin/master set-edge-env-values.sh 
+# GIT_BRANCH=origin/prod set-edge-env-values.sh 
+# GIT_BRANCH=origin/feature/1 set-edge-env-values.sh 
 
 export EdgeOrg="kurtkanaskiecicd-eval"
 
