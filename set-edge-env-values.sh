@@ -13,7 +13,7 @@
 
 # echo BRANCH: $GIT_BRANCH
 
-export EdgeOrg="kurtkanaskietrainer-trial"
+export EdgeOrg="kurtkanaskiecicd-eval"
 
 EdgeProfile="" 
 EdgeDeploySuffix="" 
