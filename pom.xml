@@ -142,6 +142,38 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>cicd-test</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<properties>
+				<apigee.profile>cicd-test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
+			<id>cicd-prod</id>
+			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
+			<properties>
+				<apigee.profile>cicd-prod</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
+				<apigee.options>override</apigee.options>
+				<apigee.override.delay>5</apigee.override.delay>
+			</properties>
+		</profile>
+		<profile>
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
