@@ -306,7 +306,7 @@ Via process-resources after replacements or when in target
 * mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=target/resources/edge
 
 Via the source without replacements
-* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=resources/edge
+* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
 
 ### Other discrete commands
 * mvn -Ptest validate (runs all validate phases: lint, apigeelint, unit)
