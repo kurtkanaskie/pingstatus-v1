@@ -83,7 +83,7 @@
 				<portal.password>${PortalPassword}</portal.password><!-- Password for the developer portal. -->
 				<portal.format>yaml</portal.format><!-- Format of the OpenAPI specs. json|yaml -->
 				<portal.api.doc.format>basic_html</portal.api.doc.format><!-- Format in the portal. Values: basic_html, restricted_html, full_html -->
-				<portal.directory>./oas</portal.directory> <!-- Directory where OpenAPI specs are accessible. Using ./specs for sample -->
+				<portal.directory>./target/resources/specs</portal.directory> <!-- Directory where OpenAPI specs are accessible. Using ./specs for sample -->
 			</properties>
 		</profile>
 		<profile>
@@ -328,7 +328,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- apigee Deploy -->
+			<!-- apigee Deploy prefix: apigee-enterprise -->
 			<plugin>
 				<groupId>io.apigee.build-tools.enterprise4g</groupId>
 				<artifactId>apigee-edge-maven-plugin</artifactId>

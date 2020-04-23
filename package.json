@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "apickli": "^1.7.0",
-    "apigeelint": "0.2.8",
+    "apigeelint": "0.4.0",
     "bluebird": "^3.3.5",
     "chai": "^3",
     "chai-fuzzy": "^1",

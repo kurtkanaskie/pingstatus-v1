@@ -5,7 +5,7 @@ var apickli = require('apickli');
 var config = require('../../test-config.json');
 var apps = require('../../devAppKeys.json');
 
-console.log('apiconfig: [' + config.apiconfig.domain + ', ' + config.apiconfig.basepath + ']');
+console.log('CURL TO: [' + config.apiconfig.domain + config.apiconfig.basepath + ']');
 
 module.exports = function() {
     // cleanup before every scenario
