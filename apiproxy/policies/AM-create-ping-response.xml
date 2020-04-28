@@ -3,9 +3,6 @@
     <DisplayName>AM-create-ping-response</DisplayName>
     <Properties/>
     <Set>
-        <Headers>
-            <Header name="Content-Type">application/json</Header>
-        </Headers>
         <Payload contentType="application/json">
 {
     "organization": "{organization.name}",
@@ -37,5 +34,5 @@
         <ReasonPhrase>OK</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="true"/>
+    <AssignTo createNew="true" type="response"/>
 </AssignMessage>

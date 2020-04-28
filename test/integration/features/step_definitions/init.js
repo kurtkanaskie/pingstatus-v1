@@ -5,7 +5,7 @@ var apickli = require('apickli');
 var config = require('../../test-config.json');
 var apps = require('../../devAppKeys.json');
 
-console.log('apiconfig: [' + config.apiconfig.domain + ', ' + config.apiconfig.basepath + ']');
+console.log('CURL TO: [' + config.apiconfig.domain + config.apiconfig.basepath + ']');
 
 module.exports = function() {
     // cleanup before every scenario
@@ -24,7 +24,7 @@ module.exports = function() {
 
 var keys = {};
 
-// Just take the first match
+// Just take the first match, no expiry or status available
 function getCredsFromExport(appName, productName){
   for(var app in apps){
     if(apps[app].name === appName){
@@ -35,12 +35,10 @@ function getCredsFromExport(appName, productName){
           if(products[product].apiproduct === productName){
             keys.clientId = credentials[credential].consumerKey;
             keys.clientSecret = credentials[credential].consumerSecret;
+            return;
           }
-          break;
         }
-        break;
       }
-      break;
     }
   }
 }

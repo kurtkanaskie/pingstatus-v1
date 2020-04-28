@@ -3,6 +3,7 @@
         {
             "name": "pingstatus-v1-app-APIGEE_ENVIRONMENT",
             "apiProducts": [ "pingstatus-v1-product-APIGEE_ENVIRONMENT" ],
+            "keyExpiresIn": -1,
             "callbackUrl": "NA",
             "scopes": [],
             "attributes": [

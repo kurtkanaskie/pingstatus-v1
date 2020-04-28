@@ -12,7 +12,7 @@
 		<pluginRepository>
 			<id>central</id>
 			<name>Maven Plugin Repository</name>
-			<url>http://repo1.maven.org/maven2</url>
+			<url>https://repo.maven.apache.org/maven2</url>
 			<layout>default</layout>
 			<snapshots>
 				<enabled>false</enabled>
@@ -59,7 +59,10 @@
 			<id>test</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<!-- Jenkins command:
-				install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} -Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
+				install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} 
+				-Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} 
+				-Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration 
+				-Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
 			-->
 			<properties>
 				<apigee.profile>test</apigee.profile>
@@ -76,18 +79,21 @@
 				<apigee.options>validate</apigee.options>
 
 				<portal.url>https://dev-amer-demo13.pantheonsite.io</portal.url><!-- URL of the developer portal. -->
-                <portal.username>${PortalUsername}</portal.username><!-- Username for the developer portal. -->
-                <portal.password>${PortalPassword}</portal.password><!-- Password for the developer portal. -->
-                <portal.format>yaml</portal.format><!-- Format of the OpenAPI specs. json|yaml -->
-                <portal.api.doc.format>basic_html</portal.api.doc.format><!-- Format in the portal. Values: basic_html, restricted_html, full_html -->
-                <portal.directory>./oas</portal.directory> <!-- Directory where OpenAPI specs are accessible. Using ./specs for sample -->
+				<portal.username>${PortalUsername}</portal.username><!-- Username for the developer portal. -->
+				<portal.password>${PortalPassword}</portal.password><!-- Password for the developer portal. -->
+				<portal.format>yaml</portal.format><!-- Format of the OpenAPI specs. json|yaml -->
+				<portal.api.doc.format>basic_html</portal.api.doc.format><!-- Format in the portal. Values: basic_html, restricted_html, full_html -->
+				<portal.directory>./target/resources/specs</portal.directory> <!-- Directory where OpenAPI specs are accessible. Using ./specs for sample -->
 			</properties>
 		</profile>
 		<profile>
 			<id>prod</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<!-- Jenkins command:
-				install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} -Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
+				install -P${EdgeProfile} -Ddeployment.suffix=${EdgeDeploySuffix} -Dapigee.org=${EdgeOrg} -Dapigee.env=${EdgeEnv} 
+				-Dapi.northbound.domain=${EdgeNorthboundDomain} -Dapigee.username=${EdgeInstallUsername} -Dapigee.password=${EdgeInstallPassword} 
+				-Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration 
+				-Dcommit=${GIT_COMMIT} -Dbranch=${GIT_BRANCH}
 			-->
 			<properties>
 				<apigee.profile>prod</apigee.profile>
@@ -136,10 +142,10 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>demo29-test</id>
+			<id>cicd-test</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
-				<apigee.profile>demo29-test</apigee.profile>
+				<apigee.profile>cicd-test</apigee.profile>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -151,10 +157,10 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>demo29-prod</id>
+			<id>cicd-prod</id>
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
-				<apigee.profile>demo29-prod</apigee.profile>
+				<apigee.profile>cicd-prod</apigee.profile>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -175,8 +181,8 @@
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
 			</properties>
@@ -189,8 +195,8 @@
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>kurtkanaskietrainer-trial-prod.apigee.net</api.northbound.domain>
 				<api.testtag>@health</api.testtag>
 				<apigee.options>override</apigee.options>
@@ -205,57 +211,17 @@
 				<apigee.hosturl>http://localhost:8080</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>trial</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>localhost:9001</api.northbound.domain>
 				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>gcp-test</id>
-			<properties>
-				<apigee.profile>gcp-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>http://35.243.181.209:8080</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>aio</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>35.243.181.209:9001</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>gcp-prod</id>
-			<properties>
-				<apigee.profile>gcp-prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>http://35.243.181.209:8080</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>edge-aio</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>35.243.181.209:9001</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health</api.testtag>
 			</properties>
 		</profile>
 	</profiles>
 
 	<build>
-		<!--
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>io.apigee.build-tools.enterprise4g</groupId>
-					<artifactId>apigee-edge-maven-plugin</artifactId>
-					<version>1.0.2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		-->
-
 		<plugins>
-			<!-- run jslint -->
+			<!-- jslint -->
 			<plugin>
 				<groupId>com.cj.jshintmojo</groupId>
 				<artifactId>jshint-maven-plugin</artifactId>
@@ -280,8 +246,9 @@
 
 			<!-- copy the full apiproxy folder to target folder -->
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>copy-resources</id>
@@ -361,11 +328,11 @@
 				</configuration>
 			</plugin>
 
-			<!-- apigee deploy -->
+			<!-- apigee Deploy prefix: apigee-enterprise -->
 			<plugin>
 				<groupId>io.apigee.build-tools.enterprise4g</groupId>
 				<artifactId>apigee-edge-maven-plugin</artifactId>
-				<version>1.1.6</version>
+				<version>1.1.7</version>
 				<executions>
 					<execution>
 						<id>configure-bundle-step</id>
@@ -389,7 +356,7 @@
 			<plugin>
 				<groupId>com.apigee.edge.config</groupId>
 				<artifactId>apigee-config-maven-plugin</artifactId>
-				<version>1.3.2</version>
+				<version>1.3.8</version>
 				<executions>
 					<execution>
 						<id>create-config-cache</id>
@@ -446,18 +413,22 @@
 							<goal>exportAppKeys</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>create-config-specs</id>
+						<phase>install</phase>                        
+						<goals>
+							<goal>specs</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 			
+			<!-- install node, npm install, run apigeelint, run unit, run integration -->
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
 				<version>1.8.0</version>
-				<!-- NOTE:
-					put the node executable in targetnode, 
-					otherwise it defaults to node and 
-					deploy plugin thinks its a node.js proxy 
-				-->
+				<!-- NOTE: put executable in targetnode, otherwise uses node and deploy plugin thinks its a node.js proxy -->
 				<configuration>
 					<installDirectory>targetnode</installDirectory>
 				</configuration>
@@ -515,21 +486,23 @@
 				</executions>
 			</plugin>
 
-			<!-- apigee API Specs -->
+			<!-- Tried putting another occurance of config-maven here, but didn't help -->
+
+			<!-- apigee Smartdocs API Specs for Drupal-->
 			<plugin>
-                <groupId>com.apigee.smartdocs.config</groupId>
-                <artifactId>apigee-smartdocs-maven-plugin</artifactId>
-                <version>2.0.0</version>
-                <executions>
-                    <execution>
-                        <id>smartdocs-deploy</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>apidoc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+				<groupId>com.apigee.smartdocs.config</groupId>
+				<artifactId>apigee-smartdocs-maven-plugin</artifactId>
+				<version>2.0.0</version>
+				<executions>
+					<execution>
+						<id>smartdocs-deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>apidoc</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 			<!-- run performance tests -->
 			<!--
@@ -583,6 +556,7 @@
 				</configuration>
 			</plugin>
 			-->
+
 			<!-- cleaning dirs -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -599,7 +573,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					<!-- leave the target dir for debugging, post mortem -->
+					<!-- Don't clean target dir for debugging, post mortem -->
 					<execution>
 						<id>auto-clean-install</id>
 						<phase>install</phase>

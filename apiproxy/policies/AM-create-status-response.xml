@@ -29,5 +29,5 @@
         <ReasonPhrase>OK</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="true"/>
+    <AssignTo createNew="true" type="response"/>
 </AssignMessage>

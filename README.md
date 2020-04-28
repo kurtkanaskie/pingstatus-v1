@@ -1,4 +1,4 @@
-# Ping and Status API Update
+# Ping and Status API
 
 This proxy demonstrates a simple design to demonstrate a full CI/CD lifecycle.
 It uses the following health check or monitoring endpoints
@@ -12,7 +12,7 @@ These endpoints can then be used by API Monitorying with Edge to send notificati
 This example is not an official Google product, nor is it part of an official Google product.
 
 ## License
-
+Â
 This material is copyright 2019, Google LLC. and is licensed under the Apache 2.0 license.
 See the [LICENSE](LICENSE) file.
 
@@ -221,7 +221,8 @@ jmeter -n -j target/test/performance/jmeter.log -l target/test/performance/outpu
 
 ### Aplicki / Cucumber Standalone Tests
 * mvn -Ptest process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
-* node ./node_modules/cucumber/bin/cucumber.js target/test/integration/features --tags @get-status
+* npm run integration -- --tags @get-ping
+* node ./node_modules/cucumber/bin/cucumber.js target/test/integration/features --tags @get-ping
 
 NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherkin.js, it doesnt find it, so use 1.3.3
 
@@ -298,7 +299,15 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Just update the API Specs
-* mvn -P test apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update
+* mvn -P test apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update -Ddeployment.suffix=
+
+### Just update the Integrated Portal API Specs
+Via process-resources after replacements or when in target
+* mvn -X -P test process-resources apigee-config:specs -Dapigee.config.options=update -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge
+* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=target/resources/specs -Dapigee.config.dir=target/resources/edge
+
+Via the source without replacements
+* mvn -P test -Dapigee.config.options=update apigee-config:specs -Dapigee.config.dir=resources/edge
 
 ### Other discrete commands
 * mvn -Ptest validate (runs all validate phases: lint, apigeelint, unit)
@@ -306,5 +315,3 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -Ptest frontend:npm@apigeelint
 * mvn -Ptest frontend:npm@unit
 * mvn -Ptest frontend:npm@integration
-
-
