@@ -1,0 +1,6 @@
+# Export: 
+curl http://localhost:8090/job/pingstatus-v1-with-rollback/config.xml
+
+# Import:
+curl 'http://localhost:8090/createItem?name=pingstatus-v1-with-rollback' --header "Content-Type: text/xml" --data-binary @pingstatus-v1-with-rollback_jenkins_config.xml
+
