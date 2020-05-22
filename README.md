@@ -265,6 +265,9 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 ### Maven all at once
 * mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapigee.smartdocs.config.options=update
 
+### Maven all at once, don't update docs
+* mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dskip.specs=true
+
 ### Cloud Build all at once
 * cloud-build-local --dryrun=true --substitutions=BRANCH_NAME=local,COMMIT_SHA=none .
 * cloud-build-local --dryrun=false --substitutions=BRANCH_NAME=local,COMMIT_SHA=none .
@@ -299,7 +302,7 @@ Replacer copies and replaces the resources dir into the target. Note use of -Dap
 * mvn -P test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 ### Just update the API Specs
-* mvn -P test apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update -Ddeployment.suffix=
+* mvn -P test process-resources apigee-smartdocs:apidoc -Dapigee.smartdocs.config.options=update -Ddeployment.suffix=
 
 ### Just update the Integrated Portal API Specs
 Via process-resources after replacements or when in target

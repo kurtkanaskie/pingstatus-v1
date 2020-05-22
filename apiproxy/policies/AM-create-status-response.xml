@@ -10,6 +10,10 @@
 {
     "organization": "{organization.name}",
     "environment": "{environment.name}",
+    "region":"{system.region.name}",
+    "pod":"{system.pod.name}",
+    "messageId":"{messageid}",
+    "messageProcessor":"{system.uuid}",
     "application": "{verifyapikey.VA-header.developer.app.name}",
     "product": "{verifyapikey.VA-header.apiproduct.name}",
     "apiproxy": "{apiproxy.name}",
@@ -22,7 +26,12 @@
     "targetLatency": {total_target_time},
     "latency": {total_request_time},
     "message":"STATUS",
-    "backendMessage":{response.content}
+    "targetResponse": {
+        "headers":{
+            "X-CorrelationId":"{response.header.X-Correlation-ID}"
+        },
+        "content":{response.content}
+    }
 }
 </Payload>
         <StatusCode>200</StatusCode>

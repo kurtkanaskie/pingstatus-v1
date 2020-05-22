@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: pingstatus-v1
   description: |
-    Healthchecks for proxy (ping) and target backend (status). 
+    Health checks for proxy (ping) and target backend (status).
     * API Key for testing: 0ubr69zqdeRJU1h5zSdcq6qUmV79xLqk
   contact:
     email: kurtkanaskie@google.com
