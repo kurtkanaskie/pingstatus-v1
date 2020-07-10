@@ -12,7 +12,7 @@ These endpoints can then be used by API Monitorying with Edge to send notificati
 This example is not an official Google product, nor is it part of an official Google product.
 
 ## License
-Â
+
 This material is copyright 2019, Google LLC. and is licensed under the Apache 2.0 license.
 See the [LICENSE](LICENSE) file.
 
