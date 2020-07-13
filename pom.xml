@@ -324,7 +324,7 @@
 			<plugin>
 				<groupId>com.apigee.edge.config</groupId>
 				<artifactId>apigee-config-maven-plugin</artifactId>
-				<version>1.4.1</version>
+				<version>1.4.2</version>
 				<executions>
 					<execution>
 						<id>create-config-cache</id>
