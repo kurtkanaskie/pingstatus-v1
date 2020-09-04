@@ -104,7 +104,7 @@
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
-				<api.testtag>@health</api.testtag>
+				<api.testtag>@health,@cors</api.testtag>
 				<apigee.options>validate,override</apigee.options>
 				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
