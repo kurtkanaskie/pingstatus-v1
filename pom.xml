@@ -39,23 +39,6 @@
 	-->
 	<profiles>
 		<profile>
-			<id>hybrid-test</id>
-			<properties>
-				<apigee.profile>hybrid-test</apigee.profile>
-				<apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
-				<apigee.org>${EdgeOrg}</apigee.org>
-				<apigee.env>${EdgeEnv}</apigee.env>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.username>${EdgeUsername}</apigee.username>
-				<apigee.password>${EdgePassword}</apigee.password>
-				<apigee.authtype>oauth</apigee.authtype>
-				<apigee.bearer>${EdgeBearer}</apigee.bearer>
-				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
-				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
-				<apigee.options>validate</apigee.options>
-			</properties>
-		</profile>
-		<profile>
 			<id>test</id>
 			<!-- amer-demo13 from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<!-- Jenkins command:
@@ -67,6 +50,9 @@
 			<properties>
 				<apigee.profile>test</apigee.profile>
 				<apigee.env>${EdgeEnv}</apigee.env>
+				<!-- 
+				<apigee.hosturl>https://api.kurtkanaskie.net/edge-facade</apigee.hosturl>
+				-->
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>${EdgeOrg}</apigee.org>
@@ -104,7 +90,7 @@
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
-				<api.testtag>@health</api.testtag>
+				<api.testtag>@health,@cors</api.testtag>
 				<apigee.options>validate,override</apigee.options>
 				<apigee.override.delay>5</apigee.override.delay>
 			</properties>
@@ -139,50 +125,6 @@
 				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
 				<apigee.options>override</apigee.options>
 				<apigee.override.delay>5</apigee.override.delay>
-			</properties>
-		</profile>
-		<profile>
-			<id>training-test</id>
-			<properties>
-				<apigee.profile>training-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
-				<apigee.username>${EdgeUsername}</apigee.username>
-				<apigee.password>${EdgePassword}</apigee.password>
-				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
-				<api.testtag>@errorHandling,@health,@wip,@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
-			<id>training-prod</id>
-			<properties>
-				<apigee.profile>training-prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
-				<apigee.username>${EdgeUsername}</apigee.username>
-				<apigee.password>${EdgePassword}</apigee.password>
-				<api.northbound.domain>kurtkanaskietrainer-trial-prod.apigee.net</api.northbound.domain>
-				<api.testtag>@health</api.testtag>
-				<apigee.options>override</apigee.options>
-				<apigee.override.delay>5</apigee.override.delay>
-			</properties>
-		</profile>
-		<profile>
-			<id>local-aio-test</id>
-			<properties>
-				<apigee.profile>local-aio-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>http://localhost:8080</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>trial</apigee.org>
-				<apigee.username>${EdgeUsername}</apigee.username>
-				<apigee.password>${EdgePassword}</apigee.password>
-				<api.northbound.domain>localhost:9001</api.northbound.domain>
-				<api.testtag>~@errorHandling,~@health,~@wip,~@mock</api.testtag>
 			</properties>
 		</profile>
 	</profiles>
@@ -324,7 +266,7 @@
 			<plugin>
 				<groupId>com.apigee.edge.config</groupId>
 				<artifactId>apigee-config-maven-plugin</artifactId>
-				<version>1.4.1</version>
+				<version>1.4.2</version>
 				<executions>
 					<execution>
 						<id>create-config-cache</id>
@@ -411,7 +353,7 @@
 							<goal>install-node-and-npm</goal>
 						</goals>
 						<configuration>
-							<nodeVersion>v8.4.0</nodeVersion>
+							<nodeVersion>v12.16.2</nodeVersion>
 						</configuration>
 					</execution>
 					<execution>
