@@ -1,6 +1,11 @@
 # Export: 
 curl http://localhost:8091/job/pingstatus-v1-with-rollback/config.xml
 
+java -jar jenkins-cli.jar -s http://localhost:8091/ get-job pingstatus-v1-with-rollback-manual > pingstatus-v1-with-rollback-manual.xml
+
+
 # Import:
 curl 'http://localhost:8091/createItem?name=pingstatus-v1-with-rollback' --header "Content-Type: application/xml" --data-binary @jenkins_pingstatus-v1-with-rollback_config.xml
+
+java -jar jenkins-cli.jar -s http://localhost:8091/ create-job pingstatus-v1-with-rollback < pingstatus-v1-with-rollback-manual.xml
 

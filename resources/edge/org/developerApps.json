@@ -1,5 +1,5 @@
 {
-    "cicd-developer-APIGEE_ENVIRONMENT@google.com": [
+    "cicd-developer-pingstatus-v1-APIGEE_ENVIRONMENT@google.com": [
         {
             "name": "pingstatus-v1-app-APIGEE_ENVIRONMENT",
             "apiProducts": [ "pingstatus-v1-product-APIGEE_ENVIRONMENT" ],
