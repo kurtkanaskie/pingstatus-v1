@@ -13,8 +13,7 @@ This example is not an official Google product, nor is it part of an official Go
 
 ## License
 
-This material is copyright 2019, Google LLC. and is licensed under the Apache 2.0 license.
-See the [LICENSE](LICENSE) file included.
+[NOTICE](NOTICE) this material is copyright 2020, Google LLC. and [LICENSE](LICENSE) is under the Apache 2.0 license. This code is open source.
 
 This code is open source.
 
@@ -318,3 +317,16 @@ Via the source without replacements
 * mvn -Ptest frontend:npm@apigeelint
 * mvn -Ptest frontend:npm@unit
 * mvn -Ptest frontend:npm@integration
+
+## Optional Cleanup
+If you've created a unique App developer, API Product, and App for integration testing you can delete them upon successful deployment and test. 
+
+This assumes you are managing the API Product(s) associated with this proxy in a separate configuration. 
+
+To use this approach first deploy and test everything with skip.clean=true:
+* mvn -P prod install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dskip.specs=true -Dskip.clean=true
+
+Then clean up the apps
+* mvn -P prod apigee-config:apps apigee-config:apiproducts -Dapigee.config.options=delete -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge
+
+NOTE: Using this approach for both "test" and "prod" has the benefit of keeping the number of App keys to one, since its deleted each time.

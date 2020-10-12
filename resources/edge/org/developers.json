@@ -1,9 +1,9 @@
 [
     {
-        "email": "cicd-developer-APIGEE_ENVIRONMENT@google.com",
-        "firstName": "CICD APIGEE_ENVIRONMENT",
+        "email": "cicd-developer-pingstatus-v1-APIGEE_ENVIRONMENT@google.com",
+        "firstName": "CICD pingstatus-v1 APIGEE_ENVIRONMENT",
         "lastName": "Developer",
-        "userName": "cicd-developer-APIGEE_ENVIRONMENT",
+        "userName": "cicd-developer-pingstatus-v1-APIGEE_ENVIRONMENT",
         "attributes": [
             {
                 "name": "note",
