@@ -1,13 +1,13 @@
 steps: 
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
-  args: ['-c', 'mvn -P $_PROFILE install -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix=$_DEPLOYSUFFIX -Dskip.clean=true -Dapigee.config.options=$_CONFIGOPTIONS -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dcommit="${COMMIT_SHA} via GCP" -Dbranch=${BRANCH_NAME}']
+  args: ['-c', 'mvn -P $_PROFILE -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV install -Dapi.northbound.domain=$_NORTHBOUNDDOMAIN -Ddeployment.suffix=$_DEPLOYSUFFIX -Dskip.clean=true -Dapigee.config.options=$_CONFIGOPTIONS -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dcommit="${COMMIT_SHA} via GCP" -Dbranch=${BRANCH_NAME}']
   dir: '.'
   secretEnv: ['USERNAME','PASSWORD']
 
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
-  args: ['-c', 'mvn -P $_PROFILE -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapigee.config.options=delete apigee-config:apps apigee-config:apiproducts apigee-config:developers clean']
+  args: ['-c', 'mvn -P $_PROFILE -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapigee.config.options=delete apigee-config:apps apigee-config:apiproducts apigee-config:developers clean']
   dir: '.'
   secretEnv: ['USERNAME','PASSWORD']
 
