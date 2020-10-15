@@ -7,7 +7,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/mvn'
   entrypoint: 'bash'
-  args: ['-c', 'mvn -P $_PROFILE -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Dapigee.config.options=delete resources:copy-resources@copy-resources replacer:replace apigee-config:apps apigee-config:apiproducts apigee-config:developers clean']
+  args: ['-c', 'mvn -P $_PROFILE -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge -Dapigee.config.options=delete resources:copy-resources@copy-resources replacer:replace  apigee-config:apps apigee-config:apiproducts apigee-config:developers clean-Dapigee.config.options=delete resources:copy-resources@copy-resources replacer:replace apigee-config:apps apigee-config:apiproducts apigee-config:developers clean']
   dir: '.'
   secretEnv: ['USERNAME','PASSWORD']
 
