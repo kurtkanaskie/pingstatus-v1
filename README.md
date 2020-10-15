@@ -324,9 +324,9 @@ If you've created a unique App developer, API Product, and App for integration t
 This assumes you are managing the API Product(s) associated with this proxy in a separate configuration. 
 
 To use this approach first deploy and test everything with "-Dskip.clean=true"
-* mvn -P prod install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dskip.specs=true -Dskip.clean=true
+* mvn -P prod install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health -Dskip.specs=true
 
 Then clean up the apps
-* mvn -P prod apigee-config:apps apigee-config:apiproducts apigee-config:developers -Dapigee.config.options=delete -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge clean
+* mvn -P prod -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge -Dapigee.config.options=delete resources:copy-resources@copy-resources replacer:replace  apigee-config:apps apigee-config:apiproducts apigee-config:developers clean
 
 NOTE: Using this approach for both "test" and "prod" has the benefit of keeping the number of App keys to one, since its deleted each time.
