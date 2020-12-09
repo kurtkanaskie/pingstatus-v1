@@ -8,7 +8,7 @@
         <Ref/>
     </AssignVariable>
     <AssignVariable>
-        <Name>flow.target.pathsuffix</Name>
+        <Name>flow_target_pathsuffix</Name>
         <Value>healthcheck</Value>
         <Ref/>
     </AssignVariable>
