@@ -9,6 +9,9 @@
     }
   },
   "servers" : [ 
+    { "url" : "https://api-test.kurtkanaskie.net/pingstatus/v1" },
+    { "url" : "https://hapi-test.kurtkanaskie.net/pingstatus/v1" },
+    { "url" : "https://napi-test.kurtkanaskie.net/pingstatus/v1" },
     { "url" : "https://amer-demo13-test.apigee.net/pingstatus/v1" }
   ],
   "paths" : {
@@ -91,15 +94,29 @@
     }
   },
   "security" : [ {
-    "ApiKey" : [ ]
+    "ClientCredentials" : [ ]
   } ],
   "components" : {
     "securitySchemes" : {
-      "ApiKey" : {
+      "ApiKeyAuth" : {
         "type" : "apiKey",
         "in" : "header",
-        "name" : "X-APIKey",
-        "description" : "See https://developer.kurtkanaskie.net/get-started",
+        "name" : "X-APIKey"
+      },
+      "ClientCredentials" : {
+        "type" : "oauth2",
+        "description" : "See http://http://dev-amer-demo13.pantheonsite.io/get-started",
+        "flows" : {
+          "clientCredentials" : {
+            "tokenUrl" : "https://amer-demo13-test.apigee.net/oauth/v1/token",
+            "scopes" : { }
+          }
+        }
+      },
+      "BearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
       }
     },
     "schemas" : {

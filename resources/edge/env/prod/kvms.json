@@ -4,7 +4,7 @@
         "encrypted": false,
         "entry": [
             {
-                "name": "target.basepath",
+                "name": "target_basepath",
                 "value": "echo"
             },
             {

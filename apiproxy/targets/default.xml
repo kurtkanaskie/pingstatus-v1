@@ -37,6 +37,6 @@
         <LoadBalancer>
             <Server name="pingstatus-v1"/>
         </LoadBalancer>
-        <Path>{flow.target.basepath}/{flow.target.pathsuffix}</Path>
+        <Path>{flow_target_basepath}/{flow_target_pathsuffix}</Path>
     </HTTPTargetConnection>
 </TargetEndpoint>

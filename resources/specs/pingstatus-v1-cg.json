@@ -9,7 +9,7 @@
     }
   },
   "servers" : [ 
-    { "url" : "https://amer-demo13-test.apigee.net/pingstatus/v1" }
+    { "url" : "https://api-test.kurtkanaskie.net/pingstatus/v1" }
   ],
   "paths" : {
     "/ping" : {
