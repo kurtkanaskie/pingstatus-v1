@@ -17,19 +17,19 @@
 # GIT_BRANCH=origin/prod set-edge-env-values.sh 
 # GIT_BRANCH=origin/feature/1 set-edge-env-values.sh 
 
-export EdgeOrg="kurtkanaskiecicd-eval"
+export EdgeOrg="amer-demo13"
 
 EdgeProfile="" 
 EdgeDeploySuffix="" 
 
 if [[ "$GIT_BRANCH" == origin/master ]]
 then
-	export EdgeProfile="test"
+	export EdgeProfile="cicd-test"
 	export EdgeEnv="test"
 
 elif [[ "$GIT_BRANCH" == origin/feature/* ]]
 then
-	export EdgeProfile="test"
+	export EdgeProfile="cicd-test"
 	export EdgeEnv="test"
 	# Get the feature name, tmp removes up to and including first /, do that again to get suffix
 	tmp=${GIT_BRANCH#*/}
@@ -38,7 +38,7 @@ then
 elif [[ "$GIT_BRANCH" == origin/prod ]]
 then
 	export EdgeEnv="prod"
-	export EdgeProfile="prod"
+	export EdgeProfile="cicd-prod"
 else
 	echo BRANCH PATH NOT FOUND
 	exit 1
