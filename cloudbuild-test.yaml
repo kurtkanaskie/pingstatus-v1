@@ -8,7 +8,7 @@ steps:
 substitutions:
   _ORG: amer-demo13
   _ENV: test
-  _PROFILE: test
+  _PROFILE: cicd-test
   _NORTHBOUNDDOMAIN: amer-demo13-test.apigee.net
   _CONFIGOPTIONS: update
   _DEPLOYSUFFIX:
@@ -16,7 +16,7 @@ options:
   substitution_option: 'ALLOW_LOOSE'
 
 secrets:
-- kmsKeyName: projects/apigee-pingstatus-v1/locations/global/keyRings/apigee-cicd/cryptoKeys/password
+- kmsKeyName: projects/apigee-pingstatus-v1/locations/global/keyRings/apigee-cicd-creds/cryptoKeys/cicd-test
   secretEnv:
-    USERNAME: CiQAOhJCgocPkbdATs7tKSLiASDRoL8O38jVxB34cOYcXhn/vmYSRQCyibiLTRACzhOkiGRAhcB7iIjDlEfzK/FDSqFZoCSpd5n5Y1gqAOBnqkuL0Qb+50tcSnqBut1xoF7uC87Axbx+Ee5fLg==
-    PASSWORD: CiQAOhJCgofcECYHrygj9vtyNOKP5ZGWQGDllPfFy54MQCPJX04SMgCyibiL6bVFcUlfjYtLfiQZFig16UUOcU94Io0f0gMyczDg4hCvpWy4soKE8IqsRtgq
+    USERNAME: CiQACFI17sar3FjsqsLuSiD6UCUYdgiSTPn+th5a/fjv1Xp5LSUSSwDwsOoNtWwkcYnmvvqGlXHnfmWZNzNhV/QwmMn/6shSWgowhVQ/aQwYVExQWwQHehepPWlCZL6rrAyjMrNtJNrYfjXKDxDqaZm4ig==
+    PASSWORD: CiQACFI17t/hqBvJHSFWJOYrVAGxi6/a7cNd+gA3e2p7PghJGxsSNADwsOoNrq39Tw92rs3RsLCR3DCZP6y7VK7xh0hUWIm197Y3SZ2+BGzp1aJpVNVeACbWqy4=

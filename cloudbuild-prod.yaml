@@ -5,24 +5,18 @@ steps:
   dir: '.'
   secretEnv: ['USERNAME','PASSWORD']
 
-- name: 'gcr.io/cloud-builders/mvn'
-  entrypoint: 'bash'
-  args: ['-c', 'mvn -P $_PROFILE -Dapigee.username=$$USERNAME -Dapigee.password=$$PASSWORD -Dapigee.org=$_ORG -Dapigee.env=$_ENV -Ddeployment.suffix= -Dapigee.config.dir=target/resources/edge -Dapigee.config.options=delete resources:copy-resources@copy-resources replacer:replace apigee-config:apps apigee-config:apiproducts apigee-config:developers']
-  dir: '.'
-  secretEnv: ['USERNAME','PASSWORD']
-
 substitutions:
   _ORG: amer-demo13
-  _ENV: test
-  _PROFILE: test
-  _NORTHBOUNDDOMAIN: amer-demo13-test.apigee.net
+  _ENV: prod
+  _PROFILE: cicd-prod
+  _NORTHBOUNDDOMAIN: amer-demo13-prod.apigee.net
   _CONFIGOPTIONS: update
   _DEPLOYSUFFIX:
 options:
   substitution_option: 'ALLOW_LOOSE'
 
 secrets:
-- kmsKeyName: projects/apigee-pingstatus-v1/locations/global/keyRings/apigee-cicd/cryptoKeys/password
+- kmsKeyName: projects/apigee-pingstatus-v1/locations/global/keyRings/apigee-cicd-creds/cryptoKeys/cicd-prod
   secretEnv:
-    USERNAME: CiQAOhJCgocPkbdATs7tKSLiASDRoL8O38jVxB34cOYcXhn/vmYSRQCyibiLTRACzhOkiGRAhcB7iIjDlEfzK/FDSqFZoCSpd5n5Y1gqAOBnqkuL0Qb+50tcSnqBut1xoF7uC87Axbx+Ee5fLg==
-    PASSWORD: CiQAOhJCgofcECYHrygj9vtyNOKP5ZGWQGDllPfFy54MQCPJX04SMgCyibiL6bVFcUlfjYtLfiQZFig16UUOcU94Io0f0gMyczDg4hCvpWy4soKE8IqsRtgq
+    USERNAME: CiQAI9l/6RdvK0HMHvoK+i7nLDEM6l+zBuNDwhdCU3uornHeIGUSSwBr830H+mTPI2JzzWPRP6y6RyXDHnSu4KtgwZXSkDTj0wK6IsCt3t2lLg0dNzD1pG5mW7jlSWUeaucTUKFdmk30xfo1s0XFyuG3hA==
+    PASSWORD: CiQAI9l/6YIwCv0cqxgA5LziUupKyBKihwWDF3yRwydLjhmKoA8SNABr830Hz1G2mL6b27brGZBwpIZucm5lomQaHvfYH8c50EegwIiN+NA67sKWvZcZPOM5Xbg=
