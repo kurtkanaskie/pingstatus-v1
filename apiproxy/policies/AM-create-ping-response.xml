@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-create-ping-response">
+<AssignMessage name="AM-create-ping-response">
     <DisplayName>AM-create-ping-response</DisplayName>
     <Properties/>
     <Set>
@@ -27,5 +27,5 @@
         <ReasonPhrase>OK</ReasonPhrase>
     </Set>
     <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="true" type="response"/>
+    <AssignTo createNew="true" transport="http" type="response"/>
 </AssignMessage>

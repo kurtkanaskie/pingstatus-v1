@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-set-standard-error-response">
+<AssignMessage name="AM-set-standard-error-response">
     <DisplayName>AM-set-standard-error-response</DisplayName>
     <Set>
         <Headers>
@@ -19,6 +19,4 @@
         <StatusCode>{flow.error.status}</StatusCode>
         <ReasonPhrase>{flow.error.reason}</ReasonPhrase>
     </Set>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" type="response"/>
 </AssignMessage>

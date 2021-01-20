@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-set-get-status-pathsuffix">
+<AssignMessage name="AM-set-get-status-pathsuffix">
     <DisplayName>AM-set-get-status-pathsuffix</DisplayName>
     <Properties/>
     <AssignVariable>
@@ -12,6 +12,4 @@
         <Value>healthcheck</Value>
         <Ref/>
     </AssignVariable>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="request"/>
 </AssignMessage>
