@@ -162,7 +162,7 @@ Here are the steps:
     * cucumberjs target/test/apickli/features/errorHandling.feature
 
 Alternatively, you can run the tests via Maven
-* `mvn -P test process-resources exec:exec@integration -api.testtag=@get-ping`
+* `mvn -P test process-resources frontend:npm@integration -api.testtag=@get-ping`
 
 NOTE: the initial output from cucumber shows the proxy and basepath being used
 ```
@@ -204,7 +204,7 @@ To see what "tags" are in the tests for cucumberjs run `grep @ *.features` or `f
 * mvn -P test clean install -Dapi.testtag=@health,@intg -Ddeployment.suffix=
 
 #### Process-resources and Run Tests by tag
-* mvn -P test process-resources exec:exec@integration -Dapi.testtag=@health
+* mvn -P test process-resources frontend:npm@integration -Dapi.testtag=@health
 
 #### Install and sync configuration items
 mvn install -Pprod -Ddeployment.suffix= -Dapigee.config.options=sync -Dcommit=local -Dbranch=master
@@ -219,7 +219,7 @@ jmeter -n -j target/test/performance/jmeter.log -l target/test/performance/outpu
 * mvn -P test jshint:lint@jslint
 
 ### Aplicki / Cucumber Standalone Tests
-* mvn -Ptest process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
+* mvn -Ptest process-resources frontend:npm@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
 * npm run integration -- --tags @get-ping
 * node ./node_modules/cucumber/bin/cucumber.js target/test/integration/features --tags @get-ping
 

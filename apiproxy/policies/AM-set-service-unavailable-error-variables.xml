@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-set-service-unavailable-error-variables">
+<AssignMessage name="AM-set-service-unavailable-error-variables">
     <DisplayName>AM-set-service-unavailable-error-variables</DisplayName>
     <Properties/>
     <Set>
@@ -39,6 +39,4 @@
         <Value>Service Unavailable</Value>
     </AssignVariable>
     <Set/>
-    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
-    <AssignTo createNew="false" transport="http" type="request"/>
 </AssignMessage>
